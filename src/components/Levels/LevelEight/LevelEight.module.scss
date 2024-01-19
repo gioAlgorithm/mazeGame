@@ -1,0 +1,237 @@
+.levelEight{
+  width: 100%;
+  height: 100%;
+  background-color: yellow;
+  cursor: url('../../../../public/image/cursor.png') 2 2, auto;
+
+  div{
+    background-color: black;
+    position: absolute;
+    z-index: 4;
+  }
+  span{
+      background-color: rgb(13, 201, 13);
+  }
+
+  // border walls
+  .borderWallWidth1{
+      width: 800px;
+      height: 10px;
+      z-index: 5;
+  }
+  .borderWallWidth2{
+      width: 800px;
+      min-width: 800px;
+      height: 10px;
+      margin-top: 490px;
+      z-index: 5;
+  }
+  .borderWallHeight1{
+      width: 10px;
+      height: 500px;
+      z-index: 5;
+  }
+  .borderWallHeight2{
+      width: 10px;
+      height: 500px;
+      margin-left: 790px;
+      z-index: 5;
+  }
+
+  .obstacle1{
+    position: absolute;
+    width: 650px;
+    height: 20px;
+    background-color: black;
+    margin-top: 130px;
+    margin-left: 50px;
+  }
+
+  .obstacle2{
+    position: absolute;
+    width: 650px;
+    height: 20px;
+    background-color: black;
+    margin-top: 230px;
+    margin-left: 50px;
+  }
+  .obstacle3{
+    position: absolute;
+    width: 650px;
+    height: 20px;
+    background-color: black;
+    margin-top: 330px;
+    margin-left: 50px;
+  }
+
+  .lvlName{
+    position: absolute;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 450px;
+    margin-left: 20px;
+    z-index: 10;
+    font-weight: 600;
+  }
+
+  .win{
+    position: absolute;
+    height: 40px;
+    width: 20px;
+    margin-left: 10px;
+    margin-top: 220px;
+    position: absolute;
+  }
+
+
+  // moving divs
+  .movingDiv1 {
+    margin-top: 100px;
+    margin-left: 600px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveUp 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv2 {
+    margin-top: 100px;
+    margin-left: 500px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveUp 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv3 {
+    margin-top: 100px;
+    margin-left: 400px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveUp 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv4 {
+    margin-top: 100px;
+    margin-left: 300px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveUp 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv5 {
+    margin-top: 100px;
+    margin-left: 200px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveUp 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv6 {
+    margin-top: 100px;
+    margin-left: 100px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveUp 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+
+  .movingDiv7 {
+    margin-top: 340px;
+    margin-left: 650px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveDown 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv8 {
+    margin-top: 340px;
+    margin-left: 550px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveDown 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv9 {
+    margin-top: 340px;
+    margin-left: 450px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveDown 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv10 {
+    margin-top: 340px;
+    margin-left: 350px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveDown 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv11 {
+    margin-top: 340px;
+    margin-left: 250px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveDown 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv12 {
+    margin-top: 340px;
+    margin-left: 150px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveDown 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv13 {
+    margin-top: 340px;
+    margin-left: 50px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: moveDown 2s infinite linear; /* Adjust the animation duration (total up and down time) as needed */
+  }
+    
+  @keyframes moveUp {
+    0%, 100% {
+      transform: translateY(340px); /* Start and end position */
+    }
+    50% {
+      transform: translateY(-100px); /* Midpoint position, change the distance to move up */
+    }
+  }
+  @keyframes moveDown {
+    0%, 100% {
+      transform: translateY(-340px); /* Start and end position */
+    }
+    50% {
+      transform: translateY(100px); /* Midpoint position, change the distance to move up */
+    }
+  }
+}

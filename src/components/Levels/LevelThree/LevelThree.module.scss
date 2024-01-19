@@ -1,0 +1,135 @@
+.levelThree{
+  width: 100%;
+  height: 100%;
+  background-color: yellow;
+  cursor: url('../../../../public/image/cursor.png') 2 2, auto;
+
+  div{
+      background-color: black;
+      position: absolute;
+      z-index: 4;
+  }
+  span{
+      background-color: rgb(13, 201, 13);
+  }
+
+      // border walls
+  .borderWallWidth1{
+      width: 800px;
+      height: 10px;
+  }
+  .borderWallWidth2{
+      width: 800px;
+      height: 10px;
+      margin-top: 490px;
+     
+  }
+  .borderWallHeight1{
+      width: 10px;
+      height: 500px;
+  }
+  .borderWallHeight2{
+      width: 10px;
+      height: 500px;
+      margin-left: 790px;
+  }
+  // obstacles
+  .obstacle1{
+      width: 800px;
+      height: 60px;
+      margin-top: 435px;
+  }
+  .obstacle2{
+      width: 100px;
+      height: 450px;
+  }
+  .obstacle3{
+      width: 600px;
+      height: 50px;
+      margin-top: 360px;
+  }
+  .obstacle4{
+      width: 270px;
+      height: 400px;
+  }
+  .obstacle5{
+      width: 170px;
+      height: 400px;
+      margin-top: 100px;
+      margin-left: 630px;
+  }
+  .obstacle6{
+      width: 350px;
+      height: 50px;
+      margin-top: 280px;
+      margin-left: 300px;
+  }
+  .obstacle7{
+      width: 250px;
+      height: 100px;
+      margin-top: 180px;
+      margin-left: 450px;
+  }
+  .obstacle8{
+      width: 180px;
+      height: 250px;
+      margin-left: 260px;
+  }
+  .obstacle9{
+      width: 100px;
+      height: 170px;
+      margin-left: 400px;
+  }
+  .obstacle10{
+      width: 20px;
+      height: 30px;
+      margin-top: 150px;
+      margin-left: 510px;
+  }
+  .obstacle11{
+      width: 20px;
+      height: 60px;
+      margin-top: 110px;
+      margin-left: 540px;
+  }
+  .obstacle12{
+      width: 60px;
+      height: 140px;
+      margin-left: 500px;
+  }
+  .obstacle13{
+      width: 190px;
+      height: 90px;
+      margin-left: 550px;
+  }
+  .obstacle14{
+      width: 60px;
+      height: 90px;
+      margin-top: 100px;
+      margin-left: 570px;
+  }
+  .obstacle15{
+      width: 800px;
+      height: 15px;
+  }
+  
+
+  .lvlName{
+      position: absolute;
+      color: white;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 1.5rem;
+      margin-top: 30px;
+      margin-left: 150px;
+      z-index: 10;
+  }
+
+  .win{
+      position: absolute;
+      height: 100px;
+      width: 60px;
+      position: absolute;
+      margin-left: 740px;
+      
+  }
+}

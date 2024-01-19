@@ -2,7 +2,7 @@
   width: 100%;
   min-height: 70px;
   height: 70px;
-  background-color: rgb(21,23,30);
+  background-color: rgb(34,37,41);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,4 +11,23 @@
   color: yellow;
   cursor: default;
   position: fixed;
+  z-index: 999;
+}
+.innerNavbar{
+  max-width: 1080px;
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+
+  a{
+    color: yellow;
+    font-size: 3rem;
+  }
+}
+.section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

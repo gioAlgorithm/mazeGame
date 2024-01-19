@@ -1,0 +1,108 @@
+.levelTwo{
+  width: 100%;
+  height: 100%;
+  background-color: yellow;
+  cursor: url('../../../../public/image/cursor.png') 2 2, auto;
+
+  div{
+      background-color: black;
+      position: absolute;
+      z-index: 4;
+  }
+  span{
+      background-color: rgb(13, 201, 13);
+  }
+
+      // border walls
+  .borderWallWidth1{
+      width: 800px;
+      height: 10px;
+  }
+  .borderWallWidth2{
+      width: 800px;
+      height: 10px;
+      margin-top: 490px;
+     
+  }
+  .borderWallHeight1{
+      width: 10px;
+      height: 500px;
+  }
+  .borderWallHeight2{
+      width: 10px;
+      height: 500px;
+      margin-left: 790px;
+  }
+  // obstacle
+  .obstacle1{
+      width: 800px;
+      height: 80px;
+      margin-top: 10px;
+  }
+  .obstacle2{
+      width: 80px;
+      height: 500px;
+      margin-left: 720px;
+  }
+  .obstacle3{
+      width: 100px;
+      height: 500px;
+  }
+  .obstacle4{
+      width: 100px;
+      height: 410px;
+      margin-left: 100px;
+  }
+  .obstacle5{
+      width: 470px;
+      height: 50px;
+      margin-left: 250px;
+      margin-top: 120px;
+  }
+  .obstacle6{
+      width: 470px;
+      height: 50px;
+      margin-left: 200px;
+      margin-top: 200px;
+  }
+  .obstacle7{
+      width: 470px;
+      height: 50px;
+      margin-left: 250px;
+      margin-top: 280px;
+  }
+  .obstacle8{
+      width: 470px;
+      height: 50px;
+      margin-left: 200px;
+      margin-top: 360px;
+  }
+  .obstacle9{
+      width: 800px;
+      height: 70px;
+      margin-top: 435px;
+  }
+  .obstacle10{
+      height: 15px;
+      width: 800px;
+  }
+
+  .lvlName{
+      position: absolute;
+      color: white;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 1.5rem;
+      margin-top: 50px;
+      margin-left: 650px;
+      z-index: 10;
+  }
+
+  .win{
+      position: absolute;
+      height: 25px;
+      width: 50px;
+      position: absolute;
+      margin-left: 100px;
+      margin-top: 410px;
+  }
+}

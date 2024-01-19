@@ -1,0 +1,221 @@
+@mixin divStyle{
+  position: relative;
+  height: 20px;
+  width: 20px;
+  margin: 10px;
+  transform: rotate(45deg);
+}
+@mixin squareStyle{
+  display: flex;
+  flex-direction: column;
+  background-color: yellow;
+}
+
+.levelFive{
+  width: 100%;
+  height: 100%;
+  background-color: yellow;
+  cursor: url('../../../../public/image/cursor.png') 2 2, auto;
+
+  div{
+      background-color: black;
+      position: absolute;
+      z-index: 4;
+  }
+  span{
+      background-color: rgb(13, 201, 13);
+  }
+
+  // border walls
+  .borderWallWidth1{
+      width: 800px;
+      height: 10px;
+      z-index: 5;
+  }
+  .borderWallWidth2{
+      width: 800px;
+      height: 10px;
+      margin-top: 490px;
+      z-index: 5;
+  }
+  .borderWallHeight1{
+      width: 10px;
+      height: 500px;
+      z-index: 5;
+  }
+  .borderWallHeight2{
+      width: 10px;
+      height: 500px;
+      margin-left: 790px;
+      z-index: 5;
+  }
+  
+  // obostacles
+  .obstacle1{
+      width: 800px;
+      height: 15px;
+      margin-top: 485px;
+      z-index: 5;
+  }
+  .obstacle2{
+      width: 800px;
+      height: 15px;
+      z-index: 5;
+  }
+
+  // suqare obstacles
+  .squareContainer1{
+      @include squareStyle();
+      margin-left: 100px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer2{
+      @include squareStyle();
+      margin-left: 135px;
+      margin-top: 15px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer3{
+      @include squareStyle();
+      margin-left: 170px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer4{
+      @include squareStyle();
+      margin-left: 205px;
+      margin-top: 15px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer5{
+      @include squareStyle();
+      margin-left: 240px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer6{
+      @include squareStyle();
+      margin-left: 275px;
+      margin-top: 15px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer7{
+      @include squareStyle();
+      margin-left: 310px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer8{
+      @include squareStyle();
+      margin-left: 345px;
+      margin-top: 15px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer9{
+      @include squareStyle();
+      margin-left: 380px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer10{
+      @include squareStyle();
+      margin-left: 415px;
+      margin-top: 15px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer11{
+      @include squareStyle();
+      margin-left: 450px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer12{
+      @include squareStyle();
+      margin-left: 485px;
+      margin-top: 15px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer13{
+      @include squareStyle();
+      margin-left: 520px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer14{
+      @include squareStyle();
+      margin-left: 555px;
+      margin-top: 15px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer15{
+      @include squareStyle();
+      margin-left: 590px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer16{
+      @include squareStyle();
+      margin-left: 625px;
+      margin-top: 15px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer17{
+      @include squareStyle();
+      margin-left: 660px;
+      div{
+          @include divStyle()
+      }
+  }
+  .squareContainer18{
+      @include squareStyle();
+      margin-left: 695px;
+      margin-top: 15px;
+      div{
+          @include divStyle()
+      }
+  }
+
+  .win{
+      position: absolute;
+      height: 500px;
+      width: 50px;
+      position: absolute;
+      margin-left: 740px;
+  }
+
+  .lvlName{
+      position: absolute;
+      color: black;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 1.5rem;
+      margin-top: 450px;
+      margin-left: 20px;
+      z-index: 10;
+      font-weight: 600;
+  }
+}

@@ -1,0 +1,114 @@
+.profile{
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+.profileContainer{
+  display: flex;
+  width: 80px;
+  padding-left: 3px;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+
+  &:hover{
+    background-color: rgb(74,77,81);
+  }
+
+  .arrow{
+    transition: all .5s;
+  }
+
+  .arrow.activeArrow{
+    transform: rotateX(180deg);
+  }
+
+  img{
+    border-radius: 50%;
+  }
+}
+.profileIcon{
+  background-color: yellow;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 60%;
+}
+.profileMenu{
+  position: absolute;
+  width: 240px;
+  min-height: 145px;
+  background-color: rgb(74,77,81);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-left: -160px;
+  margin-top: 70px;
+  padding-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+  .profileName{
+    display: flex;
+    padding: 1rem 1rem;
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 7px;
+    border-bottom: 1px solid rgb(146, 145, 145);
+    align-items: center;
+
+    span{
+      margin-left: .5rem;
+    }
+
+    img{
+      border-radius: 50%;
+    }
+  }
+  .profileButton{
+    width: 100%;
+    color: white;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 0 1rem;
+
+    svg{
+      font-size: 1.5rem;
+      margin-right: .5rem;
+    }
+
+    &:hover{
+      background-color: rgb(241, 237, 98,0.1);
+      border-left: .16rem solid yellow;
+      padding-left: 0.88rem;
+    }
+  }
+  .signOut{
+    width: 100%;
+    color: white;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 0 1rem;
+
+    svg{
+      font-size: 1.5rem;
+      margin-right: .5rem;
+    }
+
+    &:hover{
+      background-color: rgb(241, 237, 98,0.1);
+      border-left: .16rem solid yellow;
+      padding-left: 0.88rem;
+     
+    }
+  }
+}

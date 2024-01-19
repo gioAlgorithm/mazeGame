@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.scss'
 import Navbar from '@/components/Navbar/Navbar'
+import SignInModal from '@/components/Modals/SignInModal/SignInModal'
+import SignUpModal from '@/components/Modals/SignUpModal/SignUpModal'
+import { ModalProvider } from '@/context/modalContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,8 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        {children}
+        <ModalProvider>
+          <SignInModal />
+          <SignUpModal />
+        
+          <Navbar />
+          {children}
+        </ModalProvider>
       </body>
     </html>
   )

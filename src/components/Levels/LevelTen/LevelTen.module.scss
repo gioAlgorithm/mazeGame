@@ -1,0 +1,558 @@
+@mixin rhombus{
+  width: 27px;
+  height: 27px;
+  background-color: black;
+  transform: rotate(45deg);
+}
+
+.levelTen{
+  width: 100%;
+  height: 100%;
+  background-color: yellow;
+  cursor: url('../../../../public/image/cursor.png') 2 2, auto;
+
+  div{
+    background-color: black;
+    position: absolute;
+    z-index: 4;
+  }
+  span{
+      background-color: rgb(13, 201, 13);
+  }
+
+  // border walls
+  .borderWallWidth1{
+    width: 800px;
+    height: 10px;
+    z-index: 5;
+  }
+  .borderWallWidth2{
+    width: 800px;
+    min-width: 800px;
+    height: 10px;
+    margin-top: 490px;
+    z-index: 5;
+  }
+  .borderWallHeight1{
+    width: 10px;
+    height: 500px;
+    z-index: 5;
+  }
+  .borderWallHeight2{
+    width: 10px;
+    height: 500px;
+    margin-left: 790px;
+    z-index: 5;
+  }
+
+  .obstacle1{
+    width: 20px;
+    height: 180px;
+    margin-left: 750px;
+    margin-top: 280px;
+  }
+  .obstacle2{
+    width: 630px;
+    height: 25px;
+    margin-left: 130px;
+    margin-top: 450px;
+  }
+  .obstacle3{
+    width: 100px;
+    height: 420px;
+    margin-left: 10px;
+    margin-top: 70px;
+  }
+  .obstacle4{
+    width: 620px;
+    height: 20px;
+    margin-left: 110px;
+    margin-top: 415px;
+  }
+  .obstacle5{
+    width: 620px;
+    height: 20px;
+    margin-top: 350px;
+    margin-left: 130px;
+  }
+  .obstacle6{
+    width: 40px;
+    height: 200px;
+    margin-left: 750px;
+    margin-top: 80px;
+  }
+  .obstacle7{
+    width: 600px;
+    height: 20px;
+    margin-top: 300px;
+    margin-left: 110px;
+  }
+  .obstacle8{
+    width: 600px;
+    height: 20px;
+    margin-top: 220px;
+    margin-left: 150px;
+  }
+  .obstacle9{
+    width: 600px;
+    height: 20px;
+    margin-top: 140px;
+    margin-left: 110px;
+
+  }
+
+  // rhombus css
+  .rhombus1{
+    @include rhombus();
+    margin-left: 697px;
+    margin-top: 402px;
+  }
+  .rhombus2{
+    @include rhombus();
+    margin-left: 660px;
+    margin-top: 402px;
+  }
+  .rhombus3{
+    @include rhombus();
+    margin-left: 623px;
+    margin-top: 402px;
+  }
+  .rhombus4{
+    @include rhombus();
+    margin-left: 586px;
+    margin-top: 402px;
+  }
+  .rhombus5{
+    @include rhombus();
+    margin-left: 549px;
+    margin-top: 402px;
+  }
+  .rhombus6{
+    @include rhombus();
+    margin-left: 511px;
+    margin-top: 402px;
+  }
+  .rhombus7{
+    @include rhombus();
+    margin-left: 474px;
+    margin-top: 402px;
+  }
+  .rhombus8{
+    @include rhombus();
+    margin-left: 437px;
+    margin-top: 402px;
+  }
+  .rhombus9{
+    @include rhombus();
+    margin-left: 400px;
+    margin-top: 402px;
+  }
+  .rhombus10{
+    @include rhombus();
+    margin-left: 363px;
+    margin-top: 402px;
+  }
+  .rhombus11{
+    @include rhombus();
+    margin-left: 326px;
+    margin-top: 402px;
+  }
+  .rhombus12{
+    @include rhombus();
+    margin-left: 289px;
+    margin-top: 402px;
+  }
+  .rhombus13{
+    @include rhombus();
+    margin-left: 252px;
+    margin-top: 402px;
+  }
+  .rhombus14{
+    @include rhombus();
+    margin-left: 215px;
+    margin-top: 402px;
+  }
+  .rhombus15{
+    @include rhombus();
+    margin-left: 178px;
+    margin-top: 402px;
+  }
+  .rhombus16{
+    @include rhombus();
+    margin-left: 141px;
+    margin-top: 402px;
+  }
+  .rhombus17{
+    width: 47px;
+    height: 27px;
+    background-color: black;
+    transform: rotate(45deg);
+    margin-left: 86px;
+    margin-top: 395px;
+  }
+  .rhombus18{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 679px;
+  }
+  .rhombus19{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 642px;
+  }
+  .rhombus20{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 605px;
+  }
+  .rhombus21{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 568px;
+  }
+  .rhombus22{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 530px;
+  }
+  .rhombus23{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 493px;
+  }
+  .rhombus24{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 455px;
+  }
+  .rhombus25{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 418px;
+  }
+  .rhombus26{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 381px;
+  }
+  .rhombus27{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 344px;
+  }
+  .rhombus28{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 307px;
+  }
+  .rhombus29{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 270px;
+  }
+  .rhombus30{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 233px;
+  }
+  .rhombus31{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 196px;
+  }
+  .rhombus32{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 158px;
+  }
+  .rhombus33{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 120px;
+  }
+  .rhombus34{
+    @include rhombus();
+    margin-top: 356px;
+    margin-left: 717px;
+  }
+
+  // running div
+  .runningDivActivator{
+    width: 40px;
+    height: 30px;
+    margin-left: 350px;
+    margin-top: 320px;
+    background-color: yellow;
+  }
+  .runningDiv{
+    width: 50px;
+    height: 30px;
+    margin-top: 320px;
+    margin-left: 60px;
+    transition: all 3s;
+    z-index: 10;
+  }
+  .runningDiv.runningDivActive{
+    margin-left: 710px;
+  }
+
+  // moving divs
+  .movingDiv1 {
+    margin-top: 240px;
+    margin-left: 150px;
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background-color: black;
+    display: flex;
+    animation: moveUpDown 3s infinite linear .2s; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv2{
+    margin-top: 240px;
+    margin-left: 230px;
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background-color: black;
+    display: flex;
+    animation: moveUpDown 3s infinite linear .4s; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv3{
+    margin-top: 240px;
+    margin-left: 310px;
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background-color: black;
+    display: flex;
+    animation: moveUpDown 3s infinite linear .6s; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv4{
+    margin-top: 240px;
+    margin-left: 390px;
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background-color: black;
+    display: flex;
+    animation: moveUpDown 3s infinite linear .8s; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv5{
+    margin-top: 240px;
+    margin-left: 470px;
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background-color: black;
+    display: flex;
+    animation: moveUpDown 3s infinite linear 1s; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv6{
+    margin-top: 240px;
+    margin-left: 550px;
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background-color: black;
+    display: flex;
+    animation: moveUpDown 3s infinite linear 1.2s; /* Adjust the animation duration (total up and down time) as needed */
+  }
+  .movingDiv7{
+    margin-top: 240px;
+    margin-left: 630px;
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background-color: black;
+    display: flex;
+    animation: moveUpDown 3s infinite linear 1.4s; /* Adjust the animation duration (total up and down time) as needed */
+  }
+    
+  @keyframes moveUpDown {
+    0%, 100% {
+      transform: translateY(50px); /* Start and end position */
+    }
+    50% {
+      transform: translateY(-100px); /* Midpoint position, change the distance to move up */
+    }
+  }
+
+  // moving divs from left to right
+  .movingDiv8 {
+    margin-left: 110px;
+    position: absolute;
+    width: 25px;
+    height: 20px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv9 {
+    margin-top: 40px;
+    margin-left: 110px;
+    position: absolute;
+    width: 25px;
+    height: 110px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv10 {
+    margin-left: 210px;
+    position: absolute;
+    width: 25px;
+    height: 80px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv11 {
+    margin-top: 110px;
+    margin-left: 210px;
+    position: absolute;
+    width: 25px;
+    height: 40px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv12 {
+    margin-left: 310px;
+    position: absolute;
+    width: 25px;
+    height: 40px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv13 {
+    margin-top: 70px;
+    margin-left: 310px;
+    position: absolute;
+    width: 25px;
+    height: 80px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+
+  .movingDiv14 {
+    margin-left: 410px;
+    position: absolute;
+    width: 25px;
+    height: 100px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv15 {
+    margin-top: 130px;
+    margin-left: 410px;
+    position: absolute;
+    width: 25px;
+    height: 20px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+
+  .movingDiv16 {
+    margin-left: 510px;
+    position: absolute;
+    width: 25px;
+    height: 20px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv17 {
+    margin-top: 50px;
+    margin-left: 510px;
+    position: absolute;
+    width: 25px;
+    height: 100px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+
+  
+  // animation itself! for divs which moves left to right
+  @keyframes move {
+    0%, 100% {
+      transform: translateX(100px); /* Start and end position */
+    }
+    50% {
+      transform: translateY(0); /* Midpoint position, change the distance to move up */
+    }
+  }
+
+  // gate css
+  .gateOpener{
+    width: 60px;
+    height: 60px;
+    background-color: blue;
+    margin-top: 10px;
+    margin-left: 10px;
+
+    &:hover{
+      background-color: rgb(28, 28, 185);
+    }
+  }
+  .gate{
+    margin-top: 10px;
+    width: 10px;
+    height: 70px;
+    margin-left: 750px; 
+    transition: all 5s;
+  }
+  .gate.gateOpen{
+    margin-top: 80px;
+  }
+  .gateWarning{
+    position: absolute;
+    z-index: 20;
+    margin-top: 80px;
+    max-width: 100px;
+    text-align: center;
+    color: white;
+  }
+
+  // safers
+  .safer1{
+    background-color: yellow;
+    width: 20px;
+    height: 40px;
+    margin-top: 350px;
+    margin-left: 110px;
+    z-index: 10;
+  }
+  .safer2{
+    background-color: yellow;
+    width: 30px;
+    height: 20px;
+    margin-top: 280px;
+    margin-left: 760px;
+    z-index: 10;
+  }
+
+  .lvlName{
+    position: absolute;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 460px;
+    margin-left: 10px;
+    z-index: 10;
+    background-color: rgb(0, 0, 0,0);
+    font-weight: 600;
+  }
+  .win{
+    position: absolute;
+    height: 70px;
+    width: 30px;
+    margin-left: 760px;
+    margin-top: 10px;
+    position: absolute;
+  }
+}

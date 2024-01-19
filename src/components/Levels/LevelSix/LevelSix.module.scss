@@ -1,0 +1,150 @@
+@mixin rhombus{
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  transform: rotate(45deg);
+}
+
+.levelSix{
+  width: 100%;
+  height: 100%;
+  background-color: yellow;
+  cursor: url('../../../../public/image/cursor.png') 2 2, auto;
+
+  div{
+    background-color: black;
+    position: absolute;
+    z-index: 4;
+  }
+  span{
+    background-color: rgb(13, 201, 13);
+  }
+
+  .borderWallWidth1{
+    width: 800px;
+    height: 10px;
+  }
+  .borderWallWidth2{
+    width: 800px;
+    height: 10px;
+    margin-top: 490px;
+  }
+  .borderWallHeight1{
+    width: 10px;
+    height: 500px;
+  }
+  .borderWallHeight2{
+    width: 10px;
+    height: 500px;
+    margin-left: 790px;
+  }
+
+  .obstacle1{
+    width: 700px;
+    height: 220px;
+    background-color: black;
+  }
+  .obstacle2{
+    width: 700px;
+    height: 230px;
+    margin-top: 260px;
+    background-color: black;
+  }
+
+  .rhombus1{
+    @include rhombus();
+    margin-left: 650px;
+    margin-top: 240px;
+  }
+  .rhombus2{
+    @include rhombus();
+    margin-left: 610px;
+    margin-top: 200px;
+  }
+  .rhombus3{
+    @include rhombus();
+    margin-left: 570px;
+    margin-top: 240px;
+  }
+  .rhombus4{
+    @include rhombus();
+    margin-left: 530px;
+    margin-top: 200px;
+  }
+  .rhombus5{
+    @include rhombus();
+    margin-left: 490px;
+    margin-top: 240px;
+  }
+  .rhombus6{
+    @include rhombus();
+    margin-left: 450px;
+    margin-top: 200px;
+  }
+  .rhombus7{
+    @include rhombus();
+    margin-left: 410px;
+    margin-top: 240px;
+  }
+  .rhombus8{
+    @include rhombus();
+    margin-left: 370px;
+    margin-top: 200px;
+  }
+  .rhombus9{
+    @include rhombus();
+    margin-left: 330px;
+    margin-top: 240px;
+  }
+  .rhombus10{
+    @include rhombus();
+    margin-left: 290px;
+    margin-top: 200px;
+  }
+  .rhombus11{
+    @include rhombus();
+    margin-left: 250px;
+    margin-top: 240px;
+  }
+  .rhombus12{
+    @include rhombus();
+    margin-left: 210px;
+    margin-top: 200px;
+  }
+  .rhombus13{
+    @include rhombus();
+    margin-left: 170px;
+    margin-top: 240px;
+  }
+  .rhombus14{
+    @include rhombus();
+    margin-left: 130px;
+    margin-top: 200px;
+  }
+  .rhombus15{
+    @include rhombus();
+    margin-left: 90px;
+    margin-top: 240px;
+  }
+
+  .lvlName{
+    position: absolute;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-left: 30px;
+    z-index: 10;
+    font-weight: 600;
+  }
+
+  .win{
+    position: absolute;
+    height: 40px;
+    width: 60px;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 220px;
+  }
+  
+}

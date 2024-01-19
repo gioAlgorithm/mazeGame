@@ -1,0 +1,27 @@
+.timer{
+  width: 800px;
+  height: 55px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(74,77,81);
+  color: white;
+  border-top-left-radius: 2rem;
+
+  span{
+    font-size: 1.4rem;
+  }
+
+  .time{
+    span{
+      display: flex;
+    }
+
+    div{
+      width: 80px;
+      display: flex;
+      align-items: center;
+      margin-left: 5px;
+    }
+  }
+}

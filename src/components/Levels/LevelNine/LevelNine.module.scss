@@ -1,0 +1,223 @@
+.levelNine{
+  width: 100%;
+  height: 100%;
+  background-color: yellow;
+  cursor: url('../../../../public/image/cursor.png') 2 2, auto;
+
+  div{
+    background-color: black;
+    position: absolute;
+    z-index: 4;
+  }
+  span{
+      background-color: rgb(13, 201, 13);
+  }
+
+  // border walls
+  .borderWallWidth1{
+    width: 800px;
+    height: 10px;
+    z-index: 5;
+  }
+  .borderWallWidth2{
+    width: 800px;
+    min-width: 800px;
+    height: 10px;
+    margin-top: 490px;
+    z-index: 5;
+  }
+  .borderWallHeight1{
+    width: 10px;
+    height: 500px;
+    z-index: 5;
+  }
+  .borderWallHeight2{
+    width: 10px;
+    height: 500px;
+    margin-left: 790px;
+    z-index: 5;
+  }
+
+
+  .lvlName{
+    position: absolute;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-left: 770px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    font-weight: 600;
+
+    .lvlNameSpan{
+      margin-top: -6px;
+      text-align: center;
+      background-color: rgb(0, 0, 0,0);
+
+      &:last-child {
+        margin-top: 2px;
+      }
+    }
+    
+  }
+  .win{
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    margin-left: 770px;
+    margin-top: 280px;
+    position: absolute;
+  }
+
+  // moving divs
+  .movingDiv1 {
+    margin-left: 30px;
+    position: absolute;
+    width: 25px;
+    height: 250px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv2 {
+    margin-top: 300px;
+    margin-left: 30px;
+    position: absolute;
+    width: 25px;
+    height: 190px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv3 {
+    margin-left: 130px;
+    position: absolute;
+    width: 25px;
+    height: 150px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv4 {
+    margin-top: 190px;
+    margin-left: 130px;
+    position: absolute;
+    width: 25px;
+    height: 300px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv5 {
+    margin-left: 230px;
+    position: absolute;
+    width: 25px;
+    height: 200px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv6 {
+    margin-top: 250px;
+    margin-left: 230px;
+    position: absolute;
+    width: 25px;
+    height: 250px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+
+  .movingDiv7 {
+    margin-left: 330px;
+    position: absolute;
+    width: 25px;
+    height: 400px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv8 {
+    margin-top: 450px;
+    margin-left: 330px;
+    position: absolute;
+    width: 25px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+
+  .movingDiv9 {
+    margin-left: 430px;
+    position: absolute;
+    width: 25px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv10 {
+    margin-top: 100px;
+    margin-left: 430px;
+    position: absolute;
+    width: 25px;
+    height: 400px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+
+  .movingDiv11 {
+    margin-left: 530px;
+    position: absolute;
+    width: 25px;
+    height: 370px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv12 {
+    margin-top: 400px;
+    margin-left: 530px;
+    position: absolute;
+    width: 25px;
+    height: 100px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+
+  .movingDiv13 {
+    margin-left: 630px;
+    position: absolute;
+    width: 25px;
+    height: 285px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+  .movingDiv14 {
+    margin-top: 300px;
+    margin-left: 630px;
+    position: absolute;
+    width: 25px;
+    height: 200px;
+    background-color: black;
+    display: flex;
+    animation: move 2s infinite linear; /* Adjust the animation duration as needed */
+  }
+
+
+  // animation itself!
+  @keyframes move {
+    0%, 100% {
+      transform: translateX(100px); /* Start and end position */
+    }
+    50% {
+      transform: translateY(0); /* Midpoint position, change the distance to move up */
+    }
+  }
+}
