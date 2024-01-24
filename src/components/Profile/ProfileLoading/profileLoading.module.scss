@@ -1,0 +1,30 @@
+.profileLoading{
+  display: flex;
+  width: 80px;
+  padding-left: 3px;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  span{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: loadingAnimation 1s linear infinite alternate
+  }
+
+  svg{
+    color: white;
+  }
+}
+
+@keyframes loadingAnimation {
+  0%{
+    background-color: hsl(200,20%, 70%)
+  }
+
+  100%{
+    background-color: hsl(200,20%, 95%)
+  }
+}

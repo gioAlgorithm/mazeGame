@@ -121,7 +121,7 @@ const SignUpModal = () => {
                 required 
                 placeholder=" " 
                 type="email" 
-                id="email" 
+                id="signUpEmail" 
                 value={email} 
                 onChange={handleEmailChange} 
                 style={{ boxShadow: error ? 'rgb(227, 63, 92) 0px 1px 2px, rgb(227, 63, 92) 0px 0px 0px 2px' : 'black' }}
@@ -129,7 +129,7 @@ const SignUpModal = () => {
               <label className={`${inputValue.length > 0 ? style.labelFilled : ''}`} style={{color: error ? 'rgb(227, 63, 92)' : 'black'}}>Email</label>
             </div>
             
-            <Password setPassword={setPassword} password ={password} error={error} setError={setError} />
+            <Password id={'signUpPassword'} setPassword={setPassword} password ={password} error={error} setError={setError} />
 
             <button className={style.signUpBtn} type="submit">Sign Up</button>
           </form>

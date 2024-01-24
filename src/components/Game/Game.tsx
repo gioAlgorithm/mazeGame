@@ -13,6 +13,7 @@ import LevelEight from '../Levels/LevelEight/LevelEight';
 import LevelNine from '../Levels/LevelNine/LevelNine';
 import LevelTen from '../Levels/LevelTen/LevelTen';
 import Win from '../Win/Win';
+import TryAgain from '../TryAgain/TryAgain';
 
 interface TimeProps{
   startTimer: ()=> void;
@@ -24,16 +25,18 @@ const Game: React.FC<TimeProps> = ({startTimer, stopTimer, time}) => {
   const [startGame, setStartGame] = useState(false);
   const [level, setLevel] = useState<string>('');
   const [winTime, setWinTime] = useState('')
+  const [tryAgain, setTryAgain] = useState(false)
 
   const handleObstacleEnter = (): void => {
-    setStartGame(false);
     setLevel(''); 
     stopTimer()
+    setTryAgain(true)
   };
 
   return (
-    <div className={style.game}>
+    <div className={style.game} onContextMenu={(e) => e.preventDefault()}>
       {!startGame && level !== "win" && <Start setStartGame={setStartGame} startTimer={startTimer} setLevel={setLevel} />}
+      {tryAgain && <TryAgain startTimer={startTimer} setLevel={setLevel} setTryAgain={setTryAgain} />}
       {level === "levelOne" && <LevelOne handleObstacleEnter={handleObstacleEnter} setLevel={setLevel} />}
       {level === "levelTwo" && <LevelTwo handleObstacleEnter={handleObstacleEnter} setLevel={setLevel} />}
       {level === "levelThree" && <LevelThree handleObstacleEnter={handleObstacleEnter} setLevel={setLevel} />}

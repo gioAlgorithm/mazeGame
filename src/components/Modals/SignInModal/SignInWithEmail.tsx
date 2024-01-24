@@ -54,7 +54,7 @@ const SignInWithEmail = () => {
           <input
             placeholder=" "
             type="email"
-            id="email"
+            id="signInEmail"
             value={email}
             required
             onChange={handleChange}
@@ -63,7 +63,7 @@ const SignInWithEmail = () => {
           <label className={`${inputValue.length > 0 ? style.labelFilled : ''}`} style={{color: error ? 'rgb(227, 63, 92)' : 'black'}}>Email</label>
         </div>
         {/* Assuming Password component is defined and takes setPassword and password props */}
-        <Password setPassword={setPassword} password={password} error={error} setError={setError}/>
+        <Password id={'signInPassword'} setPassword={setPassword} password={password} error={error} setError={setError}/>
         <button className={style.signInEmailBtn}type="submit">
           Continue
         </button>

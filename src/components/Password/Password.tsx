@@ -8,11 +8,12 @@ interface Props {
   password: string
   error:any
   setError: React.Dispatch<React.SetStateAction<string>>
+  id: string
 }
 
 
 // Input Password Component
-const Password: React.FC<Props> = ({setPassword ,password, error, setError}) => {
+const Password: React.FC<Props> = ({setPassword ,password, error, setError, id}) => {
   // Initialize a boolean state
   const [passwordShown, setPasswordShown] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -41,7 +42,7 @@ const Password: React.FC<Props> = ({setPassword ,password, error, setError}) => 
         type={passwordShown ? "text" : "password"} 
         required 
         placeholder=" "  
-        id="password" value={password} 
+        id={id} value={password} 
         ref={(passwordRef as React.RefObject<HTMLInputElement>)} 
         onChange={handleChange}
         style={{ boxShadow: error ? 'rgb(227, 63, 92) 0px 1px 2px, rgb(227, 63, 92) 0px 0px 0px 2px' : 'black' }}

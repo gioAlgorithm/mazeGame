@@ -1,40 +1,37 @@
 'use client'
 import React from 'react'
+import dynamic from 'next/dynamic';
 import style from "./Navbar.module.scss"
-import { Black_Ops_One } from 'next/font/google'
 import SigninButton from '../SigninButton/Signin';
 import SignUpButton from '../SignUpButton/SignUp';
 import {useAuthState} from "react-firebase-hooks/auth"
 import {auth} from "../../utils/firebase"
-import Profile from '../Profile/Profile';
 import Link from 'next/link';
+import ProfileLoading from '../Profile/ProfileLoading/ProfileLoading';
 
-const inter = Black_Ops_One({
-  weight: '400',
-  subsets: ['latin'],
-});
+// preventing server side for profile to prevent hydratation
+const Profile = dynamic(() => import('../Profile/Profile'), { ssr: false });
 
 const Navbar = () => {
-  // user from firebase
-  const [user, loading] = useAuthState(auth)
-
+  const [user, loading] = useAuthState(auth);
 
   return (
     <div className={style.navbar}>
       <div className={style.innerNavbar}>
-        <Link href="/" className={inter.className}>The Maze</Link>
-        {!user && 
+        <Link href="/">
+          The Maze
+        </Link>
+        {!user && !loading && (
           <div className={style.section}>
             <SigninButton />
             <SignUpButton />
           </div>
-        }
-        {user &&
-          <Profile />
-        }
+        )}
+        {user && !loading && <Profile />}
+        {loading && <ProfileLoading />}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
