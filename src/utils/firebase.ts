@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { initializeApp } from 'firebase/app';
+import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
+import { doc, setDoc, Firestore} from 'firebase/firestore';
+import { getFirestore } from '@firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,4 +20,17 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const db: Firestore = getFirestore(app);
+
+// Log a custom event to Firebase Analytics
 export const auth = getAuth()
+
+onAuthStateChanged(auth, (user: User | null) => {
+  if (user) {
+    const { uid, email } = user;
+    const userRef = doc(db, 'users', uid);
+    setDoc(userRef, {
+      email,
+    }, { merge: true });
+  }
+});

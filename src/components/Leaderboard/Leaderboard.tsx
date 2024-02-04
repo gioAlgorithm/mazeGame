@@ -1,26 +1,14 @@
 "use client"
-import React, { useState } from 'react'
+import React from 'react'
 import style from "./Leaderboard.module.scss"
-import { IoMdArrowDropdown } from "react-icons/io";
+import Link from 'next/link'
 
 const Leaderboard = () => {
 
-  const [active, setActive] = useState(true)
-
-  const handleActive = ()=>{
-    setActive(!active)
-  }
-
   return (
-    <div className={style.leaderboard}>
-      <h1 onClick={handleActive}>Leaderboard <span> <IoMdArrowDropdown className={`${style.arrow} ${active && style.activeArrow}`} /> </span></h1>
-
-      
-        <div className={`${style.leaderboardMenu} ${active && style.leaderboardMenuActive}`}>
-        
-        </div>
-      
-    </div>
+    <Link href="/leaderboardPage" className={style.leaderboard}>
+      <h1>Leaderboard</h1>
+    </Link>
   )
 }
 

@@ -1,3 +1,4 @@
+"use client"
 import React, {useState} from "react";
 import style from "./SignInModal.module.scss"
 import { auth } from "../../../utils/firebase";

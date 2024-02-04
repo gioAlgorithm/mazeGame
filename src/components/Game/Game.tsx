@@ -1,6 +1,10 @@
 "use client"
 import React, { useState } from 'react';
 import style from "./Game.module.scss";
+import { collection, addDoc, serverTimestamp, increment, setDoc, doc, getDoc, updateDoc} from "firebase/firestore";
+import { auth, db } from "../../utils/firebase"; // Update this path
+
+// importing levels and other components for the game
 import Start from '../Start/Start';
 import LevelOne from '../Levels/LevelOne/LevelOne';
 import LevelTwo from '../Levels/LevelTwo/LevelTwo';
@@ -27,10 +31,61 @@ const Game: React.FC<TimeProps> = ({startTimer, stopTimer, time}) => {
   const [winTime, setWinTime] = useState('')
   const [tryAgain, setTryAgain] = useState(false)
 
-  const handleObstacleEnter = (): void => {
-    setLevel(''); 
-    stopTimer()
-    setTryAgain(true)
+  const handleObstacleEnter = async (): Promise<void> => {
+    setLevel('');
+    stopTimer();
+    setTryAgain(true);
+  
+    const user = auth.currentUser;
+    if (user) {
+      const userId = user.uid;
+  
+      // Create a reference to the user's stats document
+      const userStatsDoc = doc(db, `users/${userId}/stats/stats`);
+  
+      // Get the current stats snapshot
+      const statsSnapshot = await getDoc(userStatsDoc);
+  
+      if (statsSnapshot.exists()) {
+        const currentTotalGames = statsSnapshot.data()?.totalGames || 0;
+        const currentTotalTimeInSeconds = statsSnapshot.data()?.totalTime || 0;
+  
+        // Convert the time strings into seconds for comparison
+        const currentTimeInSeconds = time
+          .split(':')
+          .map((part) => parseInt(part, 10))
+          .reduce((total, part, index) => total + part * Math.pow(1, 2 - index), 0);
+  
+        await updateDoc(userStatsDoc, {
+          totalGames: currentTotalGames + 1,
+          totalTime: currentTotalTimeInSeconds + currentTimeInSeconds,
+          [level]: increment(1), // Increment the specific level count
+        });
+      } else {
+        // If the stats document doesn't exist, create it with initial values
+        const currentTimeInSeconds = time
+          .split(':')
+          .map((part) => parseInt(part, 10))
+          .reduce((total, part, index) => total + part * Math.pow(1, 2 - index), 0);
+  
+        await setDoc(userStatsDoc, {
+          totalGames: 1,
+          totalTime: currentTimeInSeconds,
+          [level]: 1, // Set the specific level count to 1
+        });
+      }
+      
+      // Add a new document to the user's "history" collection for the lost game
+      const userHistoryCollection = collection(db, `users/${userId}/history`);
+      await addDoc(userHistoryCollection, {
+        timeSpent: time,
+        levelLost: level,
+        timestamp: serverTimestamp(),
+        WinOrLost: 'Lost',
+      });
+    } else {
+      console.error('No authenticated user found. Unable to store lost game information.');
+    }
   };
 
   return (

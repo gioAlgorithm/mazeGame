@@ -15,7 +15,7 @@ import ProfileIcon from '../ProfileIcon/ProfileIcon'
 
 const Profile = () => {
   // importing user information
-  const [user, loading] = useAuthState(auth)
+  const [user] = useAuthState(auth)
   const [showMenu, setShowMenu] = useState(false)
 
   const handleShowMenu = ()=>{

@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useRef } from "react"
 import style from "./Password.module.scss"
 // Import React icons

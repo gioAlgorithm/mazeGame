@@ -1,8 +1,9 @@
 .gameContent{
   display: flex;
+  flex-direction: column;
 
   .timerGame{
     display: flex;
-    flex-direction: column;
+    
   }
 }

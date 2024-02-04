@@ -1,19 +1,24 @@
 "use client"
-import React, {useEffect} from 'react'
+import React, {useEffect, useContext} from 'react'
 import style from "./profilePage.module.scss"
 import Image from 'next/image'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import {auth} from "../../utils/firebase"
 import ProfileIcon from '../../components/ProfileIcon/ProfileIcon'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { auth} from "../../utils/firebase";
+import HistoryContainer from '@/components/HistoryContainer/HistoryContainer'
+import StatContainer from '@/components/StatContainer/StatContainer'
+
 // icons
 import { IoMdArrowDropleft } from "react-icons/io";
-import { FaHistory } from "react-icons/fa";
-import { IoStatsChartOutline } from "react-icons/io5";
+import { UserContext } from '@/context/UserContext'
 
 const ProfilePage = () => {
   const [user, loading] = useAuthState(auth)
+
+  const {gameHistory, loadingSkeleton, bestTime, totalWins, totalTime, totalGames, levelCount } = useContext(UserContext)
+  
   const router = useRouter()
 
   useEffect(() => {
@@ -21,6 +26,7 @@ const ProfilePage = () => {
       router.push('/');
     }
   }, [user, loading, router]);
+
 
 
   return (
@@ -42,19 +48,10 @@ const ProfilePage = () => {
 
       {/* profile page statistic and content */}
       <div className={style.profilePageContent}>
-        <div className={style.history}>
-          <div className={style.historyHeader}>
-            <h1>History</h1>
-            <FaHistory />
-          </div>
-        </div>
-
-        <div className={style.statistic}>
-          <div className={style.statisticHeader}>
-            <h1>Stats</h1>
-            <IoStatsChartOutline />
-          </div>
-        </div>
+        
+        <HistoryContainer gameHistory={gameHistory} loadingSkeleton={loadingSkeleton} />
+        
+        <StatContainer loadingSkeleton={loadingSkeleton} bestTime={bestTime} totalWins={totalWins} totalTime={totalTime} totalGames={totalGames} levelCount={levelCount} />
       </div>
     </div>
   )

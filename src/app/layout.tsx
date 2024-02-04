@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar/Navbar'
 import SignInModal from '@/components/Modals/SignInModal/SignInModal'
 import SignUpModal from '@/components/Modals/SignUpModal/SignUpModal'
 import { ModalProvider } from '@/context/modalContext'
+import UserProvider from '@/context/UserContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,13 +22,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <UserProvider>
         <ModalProvider>
+        
           <SignInModal />
           <SignUpModal />
         
           <Navbar />
           {children}
+        
         </ModalProvider>
+        </UserProvider>
       </body>
     </html>
   )

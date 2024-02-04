@@ -48,9 +48,10 @@ const GameContent = () => {
     <div className={style.gameContent}>
       <div className={style.timerGame}>
         <Timer time={time} />
-        <Game startTimer={startTimer} stopTimer={stopTimer} time={time} />
+        <Leaderboard />
       </div>
-      <Leaderboard />
+      <Game startTimer={startTimer} stopTimer={stopTimer} time={time} />
+      
     </div>
   )
 }

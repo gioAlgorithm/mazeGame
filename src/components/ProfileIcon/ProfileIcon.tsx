@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import style from "./ProfileIcon.module.scss"
 import {useAuthState} from "react-firebase-hooks/auth"

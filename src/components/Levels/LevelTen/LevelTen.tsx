@@ -1,6 +1,8 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react'
 import style from "./LevelTen.module.scss"
+import {collection, addDoc, serverTimestamp, doc, getDoc, setDoc, updateDoc} from "firebase/firestore"
+import { auth, db } from "../../../utils/firebase"; // Update this path
 
 interface Props{
   setLevel: React.Dispatch<React.SetStateAction<string>>;
@@ -67,12 +69,78 @@ const LevelTen: React.FC<Props> = ({handleObstacleEnter, time, setWinTime, stopT
   }, []);
 
   // win logic
-  const handleWin = ()=>{
-    setLevel('win')
-    setStartGame(false)
-    stopTimer()
-    setWinTime(time)
-  }
+  const handleWin = async () => {
+    setLevel('win');
+    setStartGame(false);
+    stopTimer();
+    setWinTime(time);
+
+    const user = auth.currentUser;
+    if (user) {
+      const userId = user.uid;
+
+      // Create a reference to the user's stats document
+      const userStatsDoc = doc(db, `users/${userId}/stats/stats`);
+
+      // Get the current stats snapshot
+      const statsSnapshot = await getDoc(userStatsDoc);
+
+      if (statsSnapshot.exists()) {
+        const currentTotalGames = statsSnapshot.data()?.totalGames || 0;
+        const currentTotalTimeInSeconds = statsSnapshot.data()?.totalTime || 0;
+        const currentTotalWins = statsSnapshot.data()?.totalWins || 0;
+        const currentBestTime = statsSnapshot.data()?.bestTime || null;
+
+        // Convert the time strings into seconds for comparison
+        const currentTimeInSeconds = time
+          .split(':')
+          .map((part) => parseInt(part, 10))
+          .reduce((total, part, index) => total + part * Math.pow(1, 2 - index), 0);
+
+        // Check if there is no previous best time or the current time is less than the previous best time
+        if (!currentBestTime || currentTimeInSeconds < currentBestTime) {
+          // Update the stats document with the new best time
+          await updateDoc(userStatsDoc, {
+            totalGames: currentTotalGames + 1,
+            totalTime: currentTotalTimeInSeconds + currentTimeInSeconds,
+            totalWins: currentTotalWins + 1,
+            bestTime: currentTimeInSeconds, // Update the best time
+          });
+        } else {
+          // Update the stats document without changing the best time
+          await updateDoc(userStatsDoc, {
+            totalGames: currentTotalGames + 1,
+            totalTime: currentTotalTimeInSeconds + currentTimeInSeconds,
+            totalWins: currentTotalWins + 1,
+          });
+        }
+      } else {
+        // If the stats document doesn't exist, create it with initial values
+        const currentTimeInSeconds = time
+          .split(':')
+          .map((part) => parseInt(part, 10))
+          .reduce((total, part, index) => total + part * Math.pow(1, 2 - index), 0);
+
+        await setDoc(userStatsDoc, {
+          totalGames: 1,
+          totalTime: currentTimeInSeconds,
+          totalWins: 1,
+          bestTime: currentTimeInSeconds, // Set the initial best time
+        });
+      }
+
+      // Add a new document to the user's "history" collection for the win
+      const userHistoryCollection = collection(db, `users/${userId}/history`);
+      await addDoc(userHistoryCollection, {
+        timeSpent: time,
+        levelLost: "levelTen",
+        timestamp: serverTimestamp(),
+        WinOrLost: 'Win',
+      });
+    } else {
+      console.error('No authenticated user found. Unable to store lost game information.');
+    }
+  };
 
   
 

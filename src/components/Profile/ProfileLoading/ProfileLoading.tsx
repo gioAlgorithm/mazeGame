@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import style from "./profileLoading.module.scss"
 import { IoMdArrowDropdown } from "react-icons/io";
