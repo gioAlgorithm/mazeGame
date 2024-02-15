@@ -2,6 +2,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import style from "./Timer.module.scss"
 import { UserContext } from '@/context/UserContext'
+import { Quantico } from 'next/font/google'
+
+const quantico = Quantico({
+  weight: ["400", '700'],
+  subsets: ['latin']
+})
 
 interface Props{
   time: string;
@@ -69,10 +75,10 @@ const Timer: React.FC<Props> = ({time, winTime, setNewRecord}) => {
   return (
     <div className={style.timer}>
       <div className={style.time}>
-        <span>Time: <div>{time}</div></span>
+        <span className={quantico.className}>Time: <div>{time}</div></span>
       </div>
       <div className={style.bestTime}>
-        <span>Best Time: {bestTimeFormatted}</span>
+        <span className={quantico.className}>Best Time: {bestTimeFormatted}</span>
       </div>
     </div>
   )
