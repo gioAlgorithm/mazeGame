@@ -66,7 +66,7 @@ const PlayerPosition = () => {
             {user?.photoURL ? <Image alt='profile' width={30} height={30} src={user?.photoURL} /> : <ProfileIcon width={`30`} height={`30`} fontSize={'1'} title={user?.displayName}/>}
             <span>{user?.displayName && user?.displayName}</span>
           </div>
-          <div className={`${style.bestTime} ${quantico.className}`}>{bestTimeFormatted}</div>
+          <div className={style.bestTime}><span className={quantico.className}>{bestTimeFormatted}</span></div>
           <div className={style.totalGames}>{totalGames || 0}</div>
         </section>
       }
