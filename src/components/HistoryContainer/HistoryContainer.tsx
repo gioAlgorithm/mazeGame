@@ -7,6 +7,12 @@ import { FaHistory } from "react-icons/fa";
 import HistoryLoading from './HistoryLoading';
 import NoData from '../noData/NoData';
 import { GameHistory } from '@/context/UserContext';
+import { Roboto } from 'next/font/google';
+
+const roboto = Roboto({
+  weight: ['100', '300', '400', '500', '700', '900'],
+  subsets: ['latin', 'cyrillic', 'cyrillic-ext' ,'greek', 'latin-ext']
+})
 
 interface Props{
   gameHistory: GameHistory[];
@@ -66,7 +72,7 @@ const HistoryContainer: React.FC<Props>  = ({gameHistory, loadingSkeleton}) => {
   return (
     <div className={style.history}>
       <div className={style.historyHeader}>
-        <h1>History</h1>
+        <h1 className={roboto.className}>History</h1>
         <FaHistory />
       </div>
       <div className={style.historyContent}>
