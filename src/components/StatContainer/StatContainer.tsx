@@ -19,11 +19,12 @@ interface Props{
   totalTime: number | null;
   totalGames: number | null;
   levelCount: Record<string, number | null>
-  leaderboard: LeaderboardUser[]
+  leaderboard: LeaderboardUser[];
+  loadingLeaderboard: boolean
 }
 
 
-const StatContainer: React.FC<Props> = ({loadingSkeleton, totalWins, bestTime, totalTime, totalGames, levelCount, leaderboard}) => {
+const StatContainer: React.FC<Props> = ({loadingSkeleton, totalWins, bestTime, totalTime, totalGames, levelCount, leaderboard, loadingLeaderboard}) => {
   // 1. Total Matches Played
   const totalMatchesPlayed = totalGames || 0;
   // 2. Total Time Played
@@ -120,35 +121,35 @@ const StatContainer: React.FC<Props> = ({loadingSkeleton, totalWins, bestTime, t
           <StatLoading />
           ) : (
             <>
-              <section>
+              <section className={roboto.className}>
                 <p className={style.title}>Total Matches</p>
                 <p className={style.stat}>{totalMatchesPlayed}</p>
               </section>
-              <section>
+              <section className={roboto.className} >
                 <p className={style.title}>Total Time Played</p>
                 <p className={style.stat}>{totalTimeFormatted}</p>
               </section>
-              <section>
+              <section className={roboto.className} >
                 <p className={style.title}>Best Time</p>
                 <p className={style.stat}>{bestTimeFormatted}</p>
               </section>
-              <section>
+              <section className={roboto.className} >
                 <p className={style.title}>Rank</p>
-                <p className={style.stat}>{getLeaderboardPosition()}</p>
+                <p className={style.stat}>{!loadingLeaderboard && getLeaderboardPosition()}</p>
               </section>
-              <section>
+              <section className={roboto.className} >
                 <p className={style.title}>Wins</p>
                 <p className={style.stat}>{totalWins || '0'}</p>
               </section>
-              <section>
+              <section className={roboto.className} >
                 <p className={style.title}>Most Lost Level</p>
                 <p className={style.stat}>{findLevelWithMaxValue(levelCount) || "None"}</p>
               </section>
-              <section>
+              <section className={roboto.className} >
                 <p className={style.title}>Win %</p>
                 <p className={style.stat}>{winPercentage || "0.00"}%</p>
               </section>
-              <section>
+              <section className={roboto.className} >
                 <p className={style.title}>Lose %</p>
                 <p className={style.stat}>{losePercentage || "0.00"}%</p>
               </section>

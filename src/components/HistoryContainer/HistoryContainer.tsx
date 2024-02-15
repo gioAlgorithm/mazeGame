@@ -87,16 +87,16 @@ const HistoryContainer: React.FC<Props>  = ({gameHistory, loadingSkeleton}) => {
               style={{background: index % 2 === 0 ? 'linear-gradient(to right, rgba(255,255,255,0.02), rgba(255,255,255,0.1))' : 'none',}}
             >
               <section className={style.firstSection}>
-                <p className={style.sectionTitle}>{getTimeAgoString(game.timestamp.toDate())}</p>
-                <p className={style.winOrLost} style={game.WinOrLost === "Lost" ? {color: "red"} : {color: 'rgb(13, 201, 13)'}}><FaKeyboard /> {game.WinOrLost}</p>
+                <p className={style.sectionTitle}><span className={roboto.className}>{getTimeAgoString(game.timestamp.toDate())}</span></p>
+                <p className={style.winOrLost} style={game.WinOrLost === "Lost" ? {color: "red"} : {color: 'rgb(13, 201, 13)'}}><FaKeyboard /><span className={roboto.className}> {game.WinOrLost}</span></p>
               </section>
               <section className={style.middleSection}>
-                <p className={style.sectionTitle}>Time</p>
-                <p className={style.time}>{game.timeSpent}</p>
+                <p className={style.sectionTitle}><span className={roboto.className}>Time</span></p>
+                <p className={style.time}><span className={roboto.className}>{game.timeSpent}</span></p>
               </section>
               <section className={style.lastSection}>
-                <p className={style.sectionTitle}>Level</p>
-                <p className={style.levelName}>{formatLevelName(game.levelLost)}</p>
+                <p className={style.sectionTitle}><span className={roboto.className}>Level</span></p>
+                <p className={style.levelName}><span className={roboto.className}>{formatLevelName(game.levelLost)}</span></p>
               </section>
               
             </div>
