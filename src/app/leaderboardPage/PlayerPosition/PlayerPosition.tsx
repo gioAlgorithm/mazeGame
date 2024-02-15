@@ -16,7 +16,7 @@ const PlayerPosition = () => {
       const userPosition = leaderboard.findIndex(user => user.id === auth.currentUser?.uid);
       if (userPosition === -1) {
         // User not in top 10
-        if(bestTime < 660) return "Top - 15"
+        if(bestTime <= 660) return "Top - 15"
         else if (bestTime > 660 && bestTime <= 700) return "Top - 20";
         else if (bestTime > 700 && bestTime <= 750) return "Top - 50";
         else if (bestTime > 750 && bestTime <= 800) return "Top - 100";
