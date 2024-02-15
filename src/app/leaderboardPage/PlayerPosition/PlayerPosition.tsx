@@ -6,6 +6,13 @@ import Image from 'next/image'
 import ProfileIcon from '@/components/ProfileIcon/ProfileIcon'
 import { UserContext } from '@/context/UserContext'
 import PlayerPositionLoading from './PlayerPositionLoading'
+import { Quantico } from 'next/font/google'
+
+const quantico = Quantico({
+  weight: ["400", '700'],
+  subsets: ['latin']
+})
+
 
 const PlayerPosition = () => {
   const [user, loading] = useAuthState(auth)
@@ -59,7 +66,7 @@ const PlayerPosition = () => {
             {user?.photoURL ? <Image alt='profile' width={30} height={30} src={user?.photoURL} /> : <ProfileIcon width={`30`} height={`30`} fontSize={'1'} title={user?.displayName}/>}
             <span>{user?.displayName && user?.displayName}</span>
           </div>
-          <div className={style.bestTime}>{bestTimeFormatted}</div>
+          <div className={`${style.bestTime} ${quantico.className}`}>{bestTimeFormatted}</div>
           <div className={style.totalGames}>{totalGames || 0}</div>
         </section>
       }
