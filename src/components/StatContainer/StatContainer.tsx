@@ -5,6 +5,12 @@ import { IoStatsChartOutline } from 'react-icons/io5';
 import StatLoading from './StatLoading';
 import { LeaderboardUser } from '@/utils/fetchLeaderboard';
 import {auth} from "../../utils/firebase"
+import { Roboto } from 'next/font/google';
+
+const roboto = Roboto({
+  weight: ['100', '300', '400', '500', '700', '900'],
+  subsets: ['latin', 'cyrillic', 'cyrillic-ext' ,'greek', 'latin-ext']
+})
 
 interface Props{
   loadingSkeleton: boolean;
@@ -106,7 +112,7 @@ const StatContainer: React.FC<Props> = ({loadingSkeleton, totalWins, bestTime, t
   return (
     <div className={style.statistic}>
       <div className={style.statisticHeader}>
-        <h1>Stats</h1>
+        <h1 className={roboto.className}>Stats</h1>
         <IoStatsChartOutline />
       </div>
       <div className={style.statContent}>
