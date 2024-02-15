@@ -15,12 +15,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Black Ops One', system-ui;
 
   h1{
     font-size: 4rem;
     margin-top: 100px;
     color: rgb(211, 10, 10);
-    font-family: 'Black Ops One', system-ui;
     font-weight: 400;
   }
   button{
@@ -38,6 +38,7 @@
   .winTime{
     font-family: 'Quantico', sans-serif;
     font-size: 2rem;
+    font-weight: 700;
   }
 
   .newRecord{

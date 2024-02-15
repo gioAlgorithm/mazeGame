@@ -4,6 +4,18 @@ import style from "./Win.module.scss"
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/utils/firebase';
 import SignInSuggest from './SignInSuggest';
+import { Black_Ops_One } from 'next/font/google';
+import { Quantico } from 'next/font/google'
+
+const quantico = Quantico({
+  weight: ["400", '700'],
+  subsets: ['latin']
+})
+
+const blackOps = Black_Ops_One({
+  weight: ["400"],
+  subsets: ['latin']
+})
 
 
 // interface
@@ -29,9 +41,9 @@ const Win: React.FC<Props> = ({setStartGame, setLevel, winTime, startTimer, newR
   return (
     <div className={style.winContainer}>
       <div className={style.innerWin}>
-        <h1>YOU WON!</h1>
+        <h1 className={blackOps.className}>YOU WON!</h1>
         {newRecord && <div className={style.newRecord}>New Record</div>}
-        <div className={style.winTime} style={!newRecord ? {marginTop: "24px"} : {}}>Time: {winTime}</div>
+        <div className={style.winTime} style={!newRecord ? {marginTop: "24px"} : {}}><span className={quantico.className}>Time: {winTime}</span></div>
         {!user && !loading &&
           <SignInSuggest />
         }
