@@ -8,9 +8,15 @@ import {useAuthState} from "react-firebase-hooks/auth"
 import {auth} from "../../utils/firebase"
 import Link from 'next/link';
 import ProfileLoading from '../Profile/ProfileLoading/ProfileLoading';
+import { Black_Ops_One } from 'next/font/google';
 
 // preventing server side for profile to prevent hydratation
 const Profile = dynamic(() => import('../Profile/Profile'), { ssr: false });
+
+const blackOps = Black_Ops_One({
+  weight: ["400"],
+  subsets: ['latin']
+})
 
 const Navbar = () => {
   const [user, loading] = useAuthState(auth);
@@ -18,7 +24,7 @@ const Navbar = () => {
   return (
     <div className={style.navbar}>
       <div className={style.innerNavbar}>
-        <Link href="/">
+        <Link href="/" className={blackOps.className}>
           The Maze
         </Link>
         {!user && !loading && (
