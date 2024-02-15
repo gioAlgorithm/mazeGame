@@ -9,6 +9,12 @@ import { UserContext } from '@/context/UserContext'
 import Image from 'next/image'
 import ProfileIcon from '@/components/ProfileIcon/ProfileIcon'
 import LoadingLeaderboard from './LoadingLeaderboard'
+import { Quantico } from 'next/font/google'
+
+const quantico = Quantico({
+  weight: ["400", '700'],
+  subsets: ['latin']
+})
 
 
 const LeaderboardPage = () => {
@@ -55,8 +61,8 @@ const LeaderboardPage = () => {
                   {item.imageUrl ? <Image alt='profile' width={30} height={30} src={item.imageUrl} /> : <ProfileIcon width={`30`} height={`30`} fontSize={'1'} title={item.displayName}/>}
                   <span>{item.displayName && item.displayName}</span>
                 </div>
-                <div className={style.bestTime}>{bestTimeFormatted}</div>
-                <div className={style.totalGames}>{item.totalGames || '0'}</div>
+                <div className={style.bestTime}><span className={quantico.className}>{bestTimeFormatted}</span></div>
+                <div className={style.totalGames}><span className={quantico.className}>{item.totalGames || '0'}</span></div>
               </section>
             )
           })

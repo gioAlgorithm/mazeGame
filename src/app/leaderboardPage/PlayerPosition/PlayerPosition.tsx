@@ -67,7 +67,7 @@ const PlayerPosition = () => {
             <span>{user?.displayName && user?.displayName}</span>
           </div>
           <div className={style.bestTime}><span className={quantico.className}>{bestTimeFormatted}</span></div>
-          <div className={style.totalGames}>{totalGames || 0}</div>
+          <div className={style.totalGames}><span className={quantico.className}>{totalGames || 0}</span></div>
         </section>
       }
       {loading &&
