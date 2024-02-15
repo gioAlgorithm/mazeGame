@@ -29,7 +29,6 @@ const StatContainer: React.FC<Props> = ({loadingSkeleton, totalWins, bestTime, t
   const totalMatchesPlayed = totalGames || 0;
   // 2. Total Time Played
   const totalTimeInSeconds = totalTime || 0;
-  console.log(leaderboard)
 
   const formatTime = (totalSeconds: number) => {
     const hours = Math.floor(totalSeconds / 3600);

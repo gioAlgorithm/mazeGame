@@ -28,7 +28,6 @@ const LeaderboardPage = () => {
   const [user, loading] = useAuthState(auth)
   // const [leaderboardData] =  useContext(UserContext)
   const {leaderboard, loadingLeaderboard} = useContext(UserContext)
-  console.log(leaderboard)
   
   return (
     <div className={style.leaderboardPage}>
