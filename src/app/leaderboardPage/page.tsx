@@ -10,9 +10,14 @@ import Image from 'next/image'
 import ProfileIcon from '@/components/ProfileIcon/ProfileIcon'
 import LoadingLeaderboard from './LoadingLeaderboard'
 import { Quantico } from 'next/font/google'
+import { Black_Ops_One } from 'next/font/google'
 
 const quantico = Quantico({
   weight: ["400", '700'],
+  subsets: ['latin']
+})
+const blackOps = Black_Ops_One({
+  weight: ["400"],
   subsets: ['latin']
 })
 
@@ -32,7 +37,7 @@ const LeaderboardPage = () => {
       <div className={style.leaderboard}>
         <div className={style.leaderboardHeader}>
           <MdOutlineLeaderboard />
-          <h1>MAZE LEADERBOARD</h1>
+          <h1 className={blackOps.className}>MAZE LEADERBOARD</h1>
         </div>
         <div className={style.titleContainer}>
           <p className={style.rankTitle}>Rank</p>
