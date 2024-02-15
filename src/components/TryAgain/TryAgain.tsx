@@ -6,15 +6,17 @@ import style from "./TryAgain.module.scss"
 interface Props{
   setLevel: React.Dispatch<React.SetStateAction<string>>;
   startTimer: ()=> void;
-  setTryAgain: React.Dispatch<React.SetStateAction<boolean>>
+  setTryAgain: React.Dispatch<React.SetStateAction<boolean>>;
+  setNewRecord: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const TryAgain: React.FC<Props> = ({ setLevel, startTimer, setTryAgain}) => {
+const TryAgain: React.FC<Props> = ({ setLevel, startTimer, setTryAgain, setNewRecord}) => {
   
   const handleStart = ()=>{
     setLevel("levelOne")
     startTimer()
     setTryAgain(false)
+    setNewRecord(false)
   }
   
   return (

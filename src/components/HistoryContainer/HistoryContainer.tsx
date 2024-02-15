@@ -14,7 +14,6 @@ interface Props{
 }
 
 const HistoryContainer: React.FC<Props>  = ({gameHistory, loadingSkeleton}) => {
-
   // calculate date and format it 
   const getTimeAgoString = (timestamp: Date): string => {
     const now = new Date();

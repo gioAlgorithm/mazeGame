@@ -1,8 +1,11 @@
 "use client"
-import React, {useState, useEffect, createContext} from 'react'
+import React, {useState, useEffect, createContext, useCallback} from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import {collection, getDocs, query, orderBy, limit, doc, getDoc} from "firebase/firestore"
-import { auth, db } from "../utils/firebase";
+import { auth } from "../utils/firebase";
+import { fetchUserStats } from '@/utils/fetchUserStats';
+import { fetchGameHistory } from '@/utils/fetchGameHistory';
+import { LeaderboardUser } from '@/utils/fetchLeaderboard';
+import { fetchLeaderboard } from '@/utils/fetchLeaderboard';
 
 // type interface for game state
 export interface GameHistory {
@@ -13,12 +16,15 @@ export interface GameHistory {
   WinOrLost: string;
 }
 
+
 //interface for contextprovider which is going to be only child
 interface ContextProviderProps{
   children: React.ReactNode
 }
 
 interface ContextType{
+  leaderboard: LeaderboardUser[],
+  loadingLeaderboard:  boolean,
   gameHistory: GameHistory[];
   setGameHistory: React.Dispatch<React.SetStateAction<GameHistory[]>>;
   bestTime: number | null;
@@ -33,9 +39,12 @@ interface ContextType{
   setLevelCount:React.Dispatch<React.SetStateAction<Record<string, number | null>>>
   loadingSkeleton: boolean;
   setLoadingSkeleton: React.Dispatch<React.SetStateAction<boolean>>;
+  fetchData: () => void;
 }
 
 export const UserContext = createContext<ContextType>({
+  leaderboard: [],
+  loadingLeaderboard: true,
   gameHistory: [],
   setGameHistory: ()=> {},
   bestTime: null,
@@ -50,6 +59,7 @@ export const UserContext = createContext<ContextType>({
   setLevelCount: ()=> {},
   loadingSkeleton: true,
   setLoadingSkeleton: ()=> {},
+  fetchData: () => { },
 })
 
 const UserProvider = ({children}: ContextProviderProps) => {
@@ -62,87 +72,70 @@ const UserProvider = ({children}: ContextProviderProps) => {
   const [totalTime, setTotalTime] = useState<number | null>(null);
   const [totalGames, setTotalGames] = useState<number | null>(null);
   const [levelCount, setLevelCount] = useState<Record<string, number | null>>({})
+
   // loading state
   const [loadingSkeleton, setLoadingSkeleton] = useState(true);
 
-  useEffect(() => {
-    const fetchGameHistory = async () => {
-      try {
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-          const uid = currentUser.uid;
-          const historyRef = collection(db, 'users', uid, 'history');
-          const q = query(historyRef, orderBy('timestamp', 'desc'), limit(30));
-          const historyDocs = await getDocs(q);
-    
-          const historyData: GameHistory[] = historyDocs.docs.map((doc) => {
-            const data = doc.data() as GameHistory;
-            return {
-              ...data,
-              id: doc.id,
-            };
-          });
-    
-          setGameHistory(historyData);
-          setLoadingSkeleton(false);
-        }
-      } catch (error) {
-        console.error('Error fetching game history:', error);
-        setLoadingSkeleton(false);
-      }
-    };
+  // Define states for leaderboard and loading
+  const [leaderboard, setLeaderboard] = useState<LeaderboardUser[]>([]);
+  const [loadingLeaderboard, setLoadingLeaderboard] = useState(true);
+
+  // Fetch leaderboard function
+  const fetchLeaderboardData = useCallback(async () => {
+    try {
+      const leaderboardData = await fetchLeaderboard();
+      setLeaderboard(leaderboardData);
+      setLoadingLeaderboard(false);
+    } catch (error) {
+      console.error('Error fetching leaderboard:', error);
+      setLoadingLeaderboard(false);
+    }
+  }, []);
   
-    const fetchUserStats = async () => {
-      const user = auth.currentUser;
+  useEffect(() => {
+    fetchLeaderboardData();
+  }, [fetchLeaderboardData]);
+
+
+  // fetching history and the stats
+  const fetchData = useCallback(async () => {
+    try {
       if (user) {
         const userId = user.uid;
-        const userStatsDoc = doc(db, `users/${userId}/stats/stats`);
-
-        try {
-          const statsSnapshot = await getDoc(userStatsDoc);
-
-          if (statsSnapshot.exists()) {
-            const currentBestTime = statsSnapshot.data()?.bestTime || null;
-            const totalWins = statsSnapshot.data()?.totalWins || null;
-            const totalTime = statsSnapshot.data()?.totalTime || null;
-            const totalGames = statsSnapshot.data()?.totalGames || null;
-
-            setBestTime(currentBestTime);
-            setTotalWins(totalWins);
-            setTotalTime(totalTime);
-            setTotalGames(totalGames);
-
-            // hard coding the levels 
-            const fetchedLevels: Record<string, number | null> = {};
-
-            // Hard code the levels based on your desired format
-            fetchedLevels["Level 1"] = statsSnapshot.data()?.levelOne || null;
-            fetchedLevels["Level 2"] = statsSnapshot.data()?.levelTwo || null;
-            fetchedLevels["Level 3"] = statsSnapshot.data()?.levelThree || null;
-            fetchedLevels["Level 4"] = statsSnapshot.data()?.levelFour || null;
-            fetchedLevels["Level 5"] = statsSnapshot.data()?.levelFive || null;
-            fetchedLevels["Level 6"] = statsSnapshot.data()?.levelSix || null;
-            fetchedLevels["Level 7"] = statsSnapshot.data()?.levelSeven || null;
-            fetchedLevels["Level 8"] = statsSnapshot.data()?.levelEight || null;
-            fetchedLevels["Level 9"] = statsSnapshot.data()?.levelNine || null;
-            fetchedLevels["Level 10"] = statsSnapshot.data()?.levelTen || null;
-
-            setLevelCount(fetchedLevels);
-          } else {
-            console.log("Stats document does not exist in Firestore.");
-          }
-        } catch (error) {
-          console.error('Error fetching user stats:', error);
+        
+        // Fetch user history
+        const userHistory = await fetchGameHistory(userId);
+        setGameHistory(userHistory);
+        setLoadingSkeleton(false);
+        
+        // Fetch user stats
+        const stats = await fetchUserStats(userId);
+        if (stats) {
+          // Update state with fetched stats
+          setBestTime(stats.bestTime);
+          setTotalWins(stats.totalWins);
+          setTotalTime(stats.totalTime);
+          setTotalGames(stats.totalGames);
+          setLevelCount(stats.fetchedLevels);
         }
       }
-    };
-    fetchUserStats()
-    fetchGameHistory()
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      setLoadingSkeleton(false);
+    }
   }, [user]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  
 
   return (
     <UserContext.Provider
       value={{
+        leaderboard,
+        loadingLeaderboard,
         gameHistory,
         setGameHistory,
         bestTime,
@@ -157,6 +150,7 @@ const UserProvider = ({children}: ContextProviderProps) => {
         setLevelCount,
         totalGames, 
         setTotalGames,
+        fetchData,
       }}
     >
       {children}

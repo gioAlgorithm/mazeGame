@@ -1,0 +1,26 @@
+.suggest{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+
+  p{
+    font-weight: 600;
+    margin-top: 5px;
+    width: 450px;
+    text-align: center;
+  }
+
+  .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 50%;
+    font-weight: 600;
+    margin-top: 20px;
+
+    span{
+      margin-left: .8rem;
+    }
+  }
+}

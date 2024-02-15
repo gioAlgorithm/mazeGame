@@ -9,23 +9,42 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   width: 100%;
 }
-.playerPosition{
+
+.leaderboard{
+  margin-top: 1rem;
   width: 80%;
-  height: 70px;
+  display: flex;
+  align-items: center;
   max-width: 1080px;
   background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.1));
+  min-height: 575px;
   border-radius: .325rem;
-  margin-top: 1rem;
-  display: flex;
   flex-direction: column;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
-  .titleContainer{
-    display: flex;
+  .leaderboardHeader{
     width: 100%;
+    height: 60px;
     background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.1));
     border-top-right-radius: .325rem;
     border-top-left-radius: .325rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    
+    svg{
+      font-size: 2.5rem;
+      color: yellow;
+    }
+    h1{
+      font-family: 'Black Ops One', system-ui;
+      font-weight: 400;
+      font-size: 2.5rem;
+      margin-left: 1rem;
+    }
+  }
+  .titleContainer{
+    display: flex;
+    width: 100%;
     padding: .2rem .2rem;
 
     .rankTitle{
@@ -33,7 +52,7 @@
       font-size: .875rem;
       font-weight: 700;
       height: 100%;
-      width: 75px;
+      min-width: 75px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -48,55 +67,211 @@
       min-width: 200px;
       width: 100%;
       height: 100%;
-      max-width: 500px;
+      max-width: 470px;
+    }
+    .bestTimeTitle{
+      color: rgb(168, 165, 165);
+      font-size: .875rem;
+      font-weight: 700;
+      height: 100%;
+      min-width: 100px;
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+    .matchesPlayedTitle{
+      color: rgb(168, 165, 165);
+      font-size: .875rem;
+      font-weight: 700;
+      height: 100%;
+      min-width: 100px;
+      display: flex;
+      align-items: center;
     }
   }
-
-  .playerPositionStat{
+  .leaderboardContent{
     display: flex;
+    width: 100%;
     padding: .2rem .2rem;
+    flex-direction: column;
     height: 100%;
 
-    .rank{
+    .userProfile{
+      display: flex;
+      padding: .2rem .2rem;
+      height: 48px;
+      width: 100%;
+      overflow: hidden;
+  
+      .rank{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        min-width: 75px;
+        font-size: 1.2rem;
+        color: white;
+        font-weight: 700;
+      }
+  
+      .profileInfo{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        min-width: 200px;
+        width: 100%;
+        max-width: 470px;
+  
+        img{
+          border-radius: 50%;
+        }
+  
+        span{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          font-size: 1.5rem;
+          color: white;
+          font-weight: 700;
+          padding-bottom: 4px;
+          margin-left: .5rem;
+        }
+      }
+      .bestTime{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        min-width: 100px;
+        font-size: 1.3rem;
+        color: white;
+        font-weight: 700;
+        font-family: 'Quantico', sans-serif;
+        margin-left: auto;
+      }
+      .totalGames{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        min-width: 100px;
+        font-size: 1.3rem;
+        color: white;
+        font-weight: 700;
+        font-family: 'Quantico', sans-serif;
+      }
+    }
+  }
+}
+// Loading style
+.loading{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .leaderboardLoading{
+    display: flex;
+    padding: .2rem .2rem;
+    height: 48px;
+
+    .first{
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100%;
       width: 75px;
-      font-size: 1.2rem;
-      color: white;
-      font-weight: 700;
-    }
 
-    .profileInfo{
+      span{
+        width: 35px;
+        height: 20px;
+        animation: loadingAnimation 1s linear infinite alternate;
+        border-radius: .125rem;
+      }
+    }
+    .second{
       display: flex;
       align-items: center;
       height: 100%;
       min-width: 200px;
       width: 100%;
-      max-width: 500px;
+      max-width: 470px;
 
-      img{
+      .left{
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
+        animation: loadingAnimation 1s linear infinite alternate;
       }
+      .right{
+        margin-left: .5rem;
+        height: 20px;
+        min-width: 100px;
+        max-width: 200px;
+        width: 100%;
+        border-radius: .125rem;
+        animation: loadingAnimation 1s linear infinite alternate;
+      }
+    }
+    .third{
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100px;
 
       span{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        font-size: 1.5rem;
-        color: white;
-        font-weight: 700;
-        padding-bottom: 4px;
-        margin-left: .5rem;
+        height: 20px;
+        width: 70px;
+        border-radius: .125rem;
+        animation: loadingAnimation 1s linear infinite alternate;
+      }
+    }
+    .fourth{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100px;
+
+      span{
+        height: 20px;
+        width: 70px;
+        border-radius: .125rem;
+        animation: loadingAnimation 1s linear infinite alternate;
       }
     }
   }
-  
+}
+// loading animation
+@keyframes loadingAnimation {
+  0%{
+    background-color: hsl(200,20%, 70%)
+  }
 
-  .rank{
-    font-size: 1.4rem;
-    color: white;
+  100%{
+    background-color: hsl(200,20%, 95%)
+  }
+}
+
+.copyright{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 800;
+  margin-top: auto;
+  padding-bottom: 2rem;
+  color: white;
+}
+
+@media(max-width: 700px){
+  .leaderboard{
+    width: 100%;
+    border-radius: 0;
+
+    .leaderboardHeader{
+      border-radius: 0;
+      
+      h1{
+        font-size: 2rem;
+      }
+    }
   }
 }

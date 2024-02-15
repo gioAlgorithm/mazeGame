@@ -32,6 +32,17 @@
     height: 50px;
     border: none;
     cursor: pointer;
-    margin-top: 250px;
+    margin-top: 180px;
+  }
+
+  .winTime{
+    font-family: 'Quantico', sans-serif;
+    font-size: 2rem;
+  }
+
+  .newRecord{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: red;
   }
 }

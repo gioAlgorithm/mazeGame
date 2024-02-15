@@ -8,14 +8,15 @@ interface Props{
   width: string;
   height: string;
   fontSize: string
+  title: string | null | undefined
 }
 
-const ProfileIcon: React.FC<Props> = ({width, height, fontSize}) => {
+const ProfileIcon: React.FC<Props> = ({width, height, fontSize, title}) => {
   const [user, loading] = useAuthState(auth)
 
   return (
     <div className={`${style.profileIcon} ${loading && style.profileIconLoading}`} style={{width: `${width}px`, height: `${height}px`, fontSize: `${fontSize}rem`}}>
-      <h1>{user?.displayName?.charAt(0).toUpperCase()}</h1>
+      <h1>{title && title.charAt(0).toUpperCase()}</h1>
     </div>
   )
 }

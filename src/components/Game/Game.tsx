@@ -23,12 +23,15 @@ interface TimeProps{
   startTimer: ()=> void;
   stopTimer: ()=> void;
   time: string;
+  winTime: string;
+  setWinTime: React.Dispatch<React.SetStateAction<string>>
+  newRecord: boolean;
+  setNewRecord: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Game: React.FC<TimeProps> = ({startTimer, stopTimer, time}) => {
+const Game: React.FC<TimeProps> = ({startTimer, stopTimer, time, winTime, setWinTime, newRecord, setNewRecord}) => {
   const [startGame, setStartGame] = useState(false);
   const [level, setLevel] = useState<string>('');
-  const [winTime, setWinTime] = useState('')
   const [tryAgain, setTryAgain] = useState(false)
 
   const handleObstacleEnter = async (): Promise<void> => {
@@ -51,10 +54,8 @@ const Game: React.FC<TimeProps> = ({startTimer, stopTimer, time}) => {
         const currentTotalTimeInSeconds = statsSnapshot.data()?.totalTime || 0;
   
         // Convert the time strings into seconds for comparison
-        const currentTimeInSeconds = time
-          .split(':')
-          .map((part) => parseInt(part, 10))
-          .reduce((total, part, index) => total + part * Math.pow(1, 2 - index), 0);
+        const [minutes, seconds] = time.split(':').map(part => parseInt(part, 10));
+        const currentTimeInSeconds = minutes * 60 + seconds;
   
         await updateDoc(userStatsDoc, {
           totalGames: currentTotalGames + 1,
@@ -90,8 +91,8 @@ const Game: React.FC<TimeProps> = ({startTimer, stopTimer, time}) => {
 
   return (
     <div className={style.game} onContextMenu={(e) => e.preventDefault()}>
-      {!startGame && level !== "win" && <Start setStartGame={setStartGame} startTimer={startTimer} setLevel={setLevel} />}
-      {tryAgain && <TryAgain startTimer={startTimer} setLevel={setLevel} setTryAgain={setTryAgain} />}
+      {!startGame && level !== "win" && <Start setStartGame={setStartGame} startTimer={startTimer} setLevel={setLevel} setNewRecord={setNewRecord} />}
+      {tryAgain && <TryAgain startTimer={startTimer} setLevel={setLevel} setTryAgain={setTryAgain} setNewRecord={setNewRecord} />}
       {level === "levelOne" && <LevelOne handleObstacleEnter={handleObstacleEnter} setLevel={setLevel} />}
       {level === "levelTwo" && <LevelTwo handleObstacleEnter={handleObstacleEnter} setLevel={setLevel} />}
       {level === "levelThree" && <LevelThree handleObstacleEnter={handleObstacleEnter} setLevel={setLevel} />}
@@ -101,8 +102,8 @@ const Game: React.FC<TimeProps> = ({startTimer, stopTimer, time}) => {
       {level === 'levelSeven' && <LevelSeven handleObstacleEnter={handleObstacleEnter} setLevel={setLevel} />}
       {level === "levelEight" && <LevelEight handleObstacleEnter={handleObstacleEnter} setLevel={setLevel} />}
       {level === "levelNine" && <LevelNine handleObstacleEnter={handleObstacleEnter} setLevel={setLevel} />}
-      {level === 'levelTen' && <LevelTen handleObstacleEnter={handleObstacleEnter} stopTimer={stopTimer} time={time} setWinTime={setWinTime} setLevel={setLevel} setStartGame={setStartGame} />}
-      {level === "win" && <Win setStartGame={setStartGame} setLevel={setLevel} winTime={winTime} startTimer={startTimer} />}
+      {level === 'levelTen' && <LevelTen handleObstacleEnter={handleObstacleEnter} stopTimer={stopTimer} time={time} setWinTime={setWinTime} setLevel={setLevel} setStartGame={setStartGame}/>}
+      {level === "win" && <Win setStartGame={setStartGame} setLevel={setLevel} winTime={winTime} startTimer={startTimer} newRecord={newRecord} setNewRecord={setNewRecord} />}
     </div>
   );
 };

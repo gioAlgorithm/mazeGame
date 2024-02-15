@@ -27,10 +27,12 @@ export const auth = getAuth()
 
 onAuthStateChanged(auth, (user: User | null) => {
   if (user) {
-    const { uid, email } = user;
+    const { uid, email, photoURL, displayName } = user;
     const userRef = doc(db, 'users', uid);
     setDoc(userRef, {
       email,
+      imageUrl: photoURL || null,
+      displayName: displayName || 'Unknown',
     }, { merge: true });
   }
 });

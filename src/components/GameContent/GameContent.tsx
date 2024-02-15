@@ -10,6 +10,8 @@ const GameContent = () => {
   // timerLogic
   const [elapsedTime, setElapsedTime] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const [winTime, setWinTime] = useState('')
+  const [newRecord, setNewRecord] = useState(false)
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
@@ -47,10 +49,10 @@ const GameContent = () => {
   return (
     <div className={style.gameContent}>
       <div className={style.timerGame}>
-        <Timer time={time} />
+        <Timer time={time} winTime={winTime} setNewRecord={setNewRecord}/>
         <Leaderboard />
       </div>
-      <Game startTimer={startTimer} stopTimer={stopTimer} time={time} />
+      <Game startTimer={startTimer} stopTimer={stopTimer} time={time} winTime={winTime} setWinTime={setWinTime} newRecord={newRecord} setNewRecord={setNewRecord} />
       
     </div>
   )

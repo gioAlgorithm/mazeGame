@@ -6,14 +6,16 @@ interface Props {
   setStartGame: React.Dispatch<React.SetStateAction<boolean>>;
   setLevel: React.Dispatch<React.SetStateAction<string>>;
   startTimer: () => void;
+  setNewRecord: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Start: React.FC<Props> = ({ setStartGame, setLevel, startTimer }) => {
+const Start: React.FC<Props> = ({ setStartGame, setLevel, startTimer, setNewRecord }) => {
   const handleStart = () => {
     // Start the game
     setStartGame(true);
     setLevel("levelOne");
     startTimer();
+    setNewRecord(false);
   };
 
   return (

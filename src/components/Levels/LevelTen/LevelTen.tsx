@@ -68,6 +68,25 @@ const LevelTen: React.FC<Props> = ({handleObstacleEnter, time, setWinTime, stopT
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const updateUserBestTime = async (userId: string, currentTimeInSeconds: number) => {
+    // Create a reference to the user's document
+    const userDocRef = doc(db, 'users', userId);
+  
+    try {
+      // Get the current user data
+      const userSnapshot = await getDoc(userDocRef);
+      const userData = userSnapshot.data();
+  
+      // Check if the user document exists and if the current time is better than the previous best time
+      if (userData && (!userData.bestTime || currentTimeInSeconds < userData.bestTime)) {
+        // Update the user document with the new best time
+        await updateDoc(userDocRef, { bestTime: currentTimeInSeconds });
+      }
+    } catch (error) {
+      console.error('Error updating best time:', error);
+    }
+  };
+
   // win logic
   const handleWin = async () => {
     setLevel('win');
@@ -78,6 +97,13 @@ const LevelTen: React.FC<Props> = ({handleObstacleEnter, time, setWinTime, stopT
     const user = auth.currentUser;
     if (user) {
       const userId = user.uid;
+
+      // Convert the time strings into seconds for comparison
+      const [minutes, seconds] = time.split(':').map(part => parseInt(part, 10));
+      const currentTimeInSeconds = minutes * 60 + seconds;
+
+      // Call the function to update the user's best time
+      await updateUserBestTime(userId, currentTimeInSeconds);
 
       // Create a reference to the user's stats document
       const userStatsDoc = doc(db, `users/${userId}/stats/stats`);
@@ -92,11 +118,9 @@ const LevelTen: React.FC<Props> = ({handleObstacleEnter, time, setWinTime, stopT
         const currentBestTime = statsSnapshot.data()?.bestTime || null;
 
         // Convert the time strings into seconds for comparison
-        const currentTimeInSeconds = time
-          .split(':')
-          .map((part) => parseInt(part, 10))
-          .reduce((total, part, index) => total + part * Math.pow(1, 2 - index), 0);
-
+        const [minutes, seconds] = time.split(':').map(part => parseInt(part, 10));
+        const currentTimeInSeconds = minutes * 60 + seconds;
+        
         // Check if there is no previous best time or the current time is less than the previous best time
         if (!currentBestTime || currentTimeInSeconds < currentBestTime) {
           // Update the stats document with the new best time

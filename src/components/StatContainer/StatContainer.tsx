@@ -3,6 +3,8 @@ import React from 'react';
 import style from './StatContainer.module.scss';
 import { IoStatsChartOutline } from 'react-icons/io5';
 import StatLoading from './StatLoading';
+import { LeaderboardUser } from '@/utils/fetchLeaderboard';
+import {auth} from "../../utils/firebase"
 
 interface Props{
   loadingSkeleton: boolean;
@@ -11,14 +13,16 @@ interface Props{
   totalTime: number | null;
   totalGames: number | null;
   levelCount: Record<string, number | null>
+  leaderboard: LeaderboardUser[]
 }
 
 
-const StatContainer: React.FC<Props> = ({loadingSkeleton, totalWins, bestTime, totalTime, totalGames, levelCount}) => {
+const StatContainer: React.FC<Props> = ({loadingSkeleton, totalWins, bestTime, totalTime, totalGames, levelCount, leaderboard}) => {
   // 1. Total Matches Played
   const totalMatchesPlayed = totalGames || 0;
   // 2. Total Time Played
   const totalTimeInSeconds = totalTime || 0;
+  console.log(leaderboard)
 
   const formatTime = (totalSeconds: number) => {
     const hours = Math.floor(totalSeconds / 3600);
@@ -53,10 +57,30 @@ const StatContainer: React.FC<Props> = ({loadingSkeleton, totalWins, bestTime, t
     return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   };
 
-  const bestTimeFormatted = bestTime !== null ? formatBestTime(bestTime) : 'N/A';
+  const bestTimeFormatted = bestTime !== null ? formatBestTime(bestTime) : '00:00';
 
   // 4. rank logic 
-
+  const getLeaderboardPosition = () => {
+    if (!loadingSkeleton && bestTime) {
+      const userPosition = leaderboard.findIndex(user => user.id === auth.currentUser?.uid);
+      if (userPosition === -1) {
+        // User not in top 10
+        if(bestTime < 660) return "Top - 15"
+        else if (bestTime > 660 && bestTime <= 700) return "Top - 20";
+        else if (bestTime > 700 && bestTime <= 750) return "Top - 50";
+        else if (bestTime > 750 && bestTime <= 800) return "Top - 100";
+        else if (bestTime > 800 && bestTime <= 850) return "Top - 25%";
+        else if (bestTime > 850 && bestTime <= 900) return "Top - 50%";
+        else if (bestTime > 900 && bestTime <= 950) return "Top - 75%";
+        else if (bestTime > 950) return "Top - 90%";
+      } else {
+        // User in top 10
+        return `#${userPosition + 1}`;
+      }
+    }else{
+      return "None"
+    }
+  };
   // 5. Most Lost Level
   const findLevelWithMaxValue = (levelCount: Record<string, number | null>): string | null => {
     let maxLevel: string | null = null;
@@ -72,31 +96,6 @@ const StatContainer: React.FC<Props> = ({loadingSkeleton, totalWins, bestTime, t
     return maxLevel;
   };
 
-  // format level names
-  const formatLevelName = (level: string | null): string | null => {
-    const numberMap: Record<string, string> = {
-      one: '1',
-      two: '2',
-      three: '3',
-      four: '4',
-      five: '5',
-      six: '6',
-      seven: '7',
-      eight: '8',
-      nine: '9',
-      ten: '10',
-    };
-
-    const numberMatch = level !== null && level.match(/one|two|three|four|five|six|seven|eight|nine|ten/i);
-
-    if (numberMatch) {
-      const spelledOutNumber = numberMatch[0].toLowerCase();
-      const numericValue = numberMap[spelledOutNumber];
-      return `Level ${numericValue}`;
-    }
-
-    return level; // Return the original level name if no match is found
-  };
 
   // Win percentage
   const winPercentage = totalWins !== null ? ((totalWins / totalMatchesPlayed) * 100).toFixed(2) : '0.00';
@@ -129,7 +128,7 @@ const StatContainer: React.FC<Props> = ({loadingSkeleton, totalWins, bestTime, t
               </section>
               <section>
                 <p className={style.title}>Rank</p>
-                <p className={style.stat}>#6</p>
+                <p className={style.stat}>{getLeaderboardPosition()}</p>
               </section>
               <section>
                 <p className={style.title}>Wins</p>
@@ -137,15 +136,15 @@ const StatContainer: React.FC<Props> = ({loadingSkeleton, totalWins, bestTime, t
               </section>
               <section>
                 <p className={style.title}>Most Lost Level</p>
-                <p className={style.stat}>{findLevelWithMaxValue(levelCount)}</p>
+                <p className={style.stat}>{findLevelWithMaxValue(levelCount) || "None"}</p>
               </section>
               <section>
                 <p className={style.title}>Win %</p>
-                <p className={style.stat}>{winPercentage}%</p>
+                <p className={style.stat}>{winPercentage || "0.00"}%</p>
               </section>
               <section>
                 <p className={style.title}>Lose %</p>
-                <p className={style.stat}>{losePercentage}%</p>
+                <p className={style.stat}>{losePercentage || "0.00"}%</p>
               </section>
             </>
           )}

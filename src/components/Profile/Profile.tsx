@@ -47,13 +47,13 @@ const Profile = () => {
   return (
     <div className={style.profile}>
       <div className={style.profileContainer} style={profileContainerStyle} onClick={handleShowMenu}>
-        {user?.photoURL ? <Image alt='profile' width={40} height={40} src={user?.photoURL} /> : <ProfileIcon width={`40`} height={`40`} fontSize={'1'}/>}
+        {user?.photoURL ? <Image alt='profile' width={40} height={40} src={user?.photoURL} /> : <ProfileIcon width={`40`} height={`40`} fontSize={'1'} title={user?.displayName}/>}
         <IoMdArrowDropdown className={`${style.arrow} ${showMenu && style.activeArrow}`}/>
       </div>
       {showMenu &&
         <div className={style.profileMenu} ref={menuRef}>
           <div className={style.profileName}>
-            {user?.photoURL ? <Image alt='profile' width={24} height={24} src={user?.photoURL} /> : <ProfileIcon width={`24`} height={`24`} fontSize={`.65`} /> }
+            {user?.photoURL ? <Image alt='profile' width={24} height={24} src={user?.photoURL} /> : <ProfileIcon width={`24`} height={`24`} fontSize={`.65`} title={user?.displayName}/> }
             <span>
               {user?.displayName && user?.displayName}
             </span>

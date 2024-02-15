@@ -22,17 +22,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <UserProvider>
-        <ModalProvider>
         
+        <ModalProvider>
+        <UserProvider>
           <SignInModal />
           <SignUpModal />
         
           <Navbar />
           {children}
-        
-        </ModalProvider>
         </UserProvider>
+        </ModalProvider>
+        
       </body>
     </html>
   )
