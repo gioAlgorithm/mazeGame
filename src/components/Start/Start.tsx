@@ -35,7 +35,7 @@ const Start: React.FC<Props> = ({ setStartGame, setLevel, startTimer, setNewReco
     <div className={style.startContainer}>
       <div className={style.innerStart}>
         <h1 className={blackOps.className}>THE MAZE</h1>
-        <p className={russoOne.className}>Guide the red point through the maze, but don&apos;t touch the walls!</p>
+        <span className={style.guide}><p className={russoOne.className}>Guide the red point through the maze, but don&apos;t touch the walls!</p></span>
         <button onClick={handleStart}>Play</button>
       </div>
     </div>
