@@ -12,12 +12,14 @@ import LoadingLeaderboard from './LoadingLeaderboard'
 import { Quantico } from 'next/font/google'
 import { Black_Ops_One } from 'next/font/google'
 
-const quantico = Quantico({
-  weight: ["400", '700'],
-  subsets: ['latin']
-})
+
 const blackOps = Black_Ops_One({
   weight: ["400"],
+  subsets: ['latin']
+})
+
+const quantico = Quantico({
+  weight: ["400", '700'],
   subsets: ['latin']
 })
 
