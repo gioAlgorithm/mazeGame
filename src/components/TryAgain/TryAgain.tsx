@@ -20,15 +20,17 @@ interface Props{
   startTimer: ()=> void;
   setTryAgain: React.Dispatch<React.SetStateAction<boolean>>;
   setNewRecord: React.Dispatch<React.SetStateAction<boolean>>;
+  setStartGame: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const TryAgain: React.FC<Props> = ({ setLevel, startTimer, setTryAgain, setNewRecord}) => {
+const TryAgain: React.FC<Props> = ({ setLevel, startTimer, setTryAgain, setNewRecord, setStartGame}) => {
   
   const handleStart = ()=>{
     setLevel("levelOne")
     startTimer()
     setTryAgain(false)
     setNewRecord(false)
+    setStartGame(true)
   }
   
   return (

@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import style from "./Game.module.scss";
 import { collection, addDoc, serverTimestamp, increment, setDoc, doc, getDoc, updateDoc} from "firebase/firestore";
 import { auth, db } from "../../utils/firebase"; // Update this path
@@ -31,13 +31,33 @@ interface TimeProps{
 
 const Game: React.FC<TimeProps> = ({startTimer, stopTimer, time, winTime, setWinTime, newRecord, setNewRecord}) => {
   const [startGame, setStartGame] = useState(false);
-  const [level, setLevel] = useState<string>('');
+  const [level, setLevel] = useState<string>('startGame');
   const [tryAgain, setTryAgain] = useState(false)
+  const [prevMousePosition, setPrevMousePosition] = useState({ x: 0, y: 0 });
+  const mouseMoveThreshold = 40; // Threshold for mouse movement detection
+
+  const gameRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const { clientX, clientY } = event;
+    const { x: prevX, y: prevY } = prevMousePosition;
+    const dx = Math.abs(clientX - prevX);
+    const dy = Math.abs(clientY - prevY);
+
+    // Check if mouse movement exceeds threshold
+    if ((dx > mouseMoveThreshold || dy > mouseMoveThreshold) && startGame) {
+      handleObstacleEnter();
+      console.log('cheated')
+    }
+    
+    setPrevMousePosition({ x: clientX, y: clientY });
+  };
 
   const handleObstacleEnter = async (): Promise<void> => {
     setLevel('');
     stopTimer();
     setTryAgain(true);
+    setStartGame(false)
   
     const user = auth.currentUser;
     if (user) {
@@ -90,9 +110,9 @@ const Game: React.FC<TimeProps> = ({startTimer, stopTimer, time, winTime, setWin
   };
 
   return (
-    <div className={style.game} onContextMenu={(e) => e.preventDefault()}>
-      {!startGame && level !== "win" && <Start setStartGame={setStartGame} startTimer={startTimer} setLevel={setLevel} setNewRecord={setNewRecord} />}
-      {tryAgain && <TryAgain startTimer={startTimer} setLevel={setLevel} setTryAgain={setTryAgain} setNewRecord={setNewRecord} />}
+    <div className={style.game} onContextMenu={(e) => e.preventDefault()} onMouseMove={handleMouseMove} ref={gameRef}>
+      {!startGame && level !== "win" && !tryAgain && level === "startGame" && <Start setStartGame={setStartGame} startTimer={startTimer} setLevel={setLevel} setNewRecord={setNewRecord} />}
+      {tryAgain && !startGame && <TryAgain startTimer={startTimer} setLevel={setLevel} setTryAgain={setTryAgain} setNewRecord={setNewRecord} setStartGame={setStartGame} />}
       {level === "levelOne" && <LevelOne handleObstacleEnter={handleObstacleEnter} setLevel={setLevel} />}
       {level === "levelTwo" && <LevelTwo handleObstacleEnter={handleObstacleEnter} setLevel={setLevel} />}
       {level === "levelThree" && <LevelThree handleObstacleEnter={handleObstacleEnter} setLevel={setLevel} />}
