@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { auth} from "../../utils/firebase";
 import HistoryContainer from '@/components/HistoryContainer/HistoryContainer'
 import StatContainer from '@/components/StatContainer/StatContainer'
+import {metadata} from "./metaData"
 
 // icons
 import { IoMdArrowDropleft } from "react-icons/io";
@@ -34,6 +35,13 @@ const ProfilePage = () => {
     fetchData();
     console.log("fetch data")
   }, [fetchData]);
+
+  // changing metadata
+  useEffect(() => {
+    if (metadata.title) {
+      document.title = String(metadata.title)
+    }
+  }, []);
 
 
 

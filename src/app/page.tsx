@@ -1,7 +1,17 @@
+"use client"
+import { useEffect } from 'react'
 import styles from './page.module.scss'
 import GameContent from '@/components/GameContent/GameContent'
+import {metadata} from "./metaData"
 
 export default function Home() {
+
+  // changing metadata
+  useEffect(() => {
+    if (metadata.title) {
+      document.title = String(metadata.title)
+    }
+  }, []);
 
   return (
     <main className={styles.main}>

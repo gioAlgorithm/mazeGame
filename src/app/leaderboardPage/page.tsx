@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import style from "./leaderboardPage.module.scss"
 import { useAuthState } from 'react-firebase-hooks/auth'
 import {auth} from "../../utils/firebase"
@@ -11,6 +11,7 @@ import ProfileIcon from '@/components/ProfileIcon/ProfileIcon'
 import LoadingLeaderboard from './LoadingLeaderboard'
 import { Quantico } from 'next/font/google'
 import { Black_Ops_One } from 'next/font/google'
+import {metadata} from "./metaData"
 
 
 const blackOps = Black_Ops_One({
@@ -28,6 +29,13 @@ const LeaderboardPage = () => {
   const [user, loading] = useAuthState(auth)
   // const [leaderboardData] =  useContext(UserContext)
   const {leaderboard, loadingLeaderboard} = useContext(UserContext)
+
+  // changing metadata
+  useEffect(() => {
+    if (metadata.title) {
+      document.title = String(metadata.title)
+    }
+  }, []);
   
   return (
     <div className={style.leaderboardPage}>
