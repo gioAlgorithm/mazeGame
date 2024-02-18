@@ -34,7 +34,7 @@ const Game: React.FC<TimeProps> = ({startTimer, stopTimer, time, winTime, setWin
   const [level, setLevel] = useState<string>('startGame');
   const [tryAgain, setTryAgain] = useState(false)
   const [prevMousePosition, setPrevMousePosition] = useState({ x: 0, y: 0 });
-  const mouseMoveThreshold = 200; // Threshold for mouse movement detection
+  const mouseMoveThreshold = 80; // Threshold for mouse movement detection
 
   const gameRef = useRef<HTMLDivElement>(null);
 
