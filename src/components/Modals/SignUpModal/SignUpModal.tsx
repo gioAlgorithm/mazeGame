@@ -96,7 +96,7 @@ const SignUpModal = () => {
 
   return (
     <div  className={`${style.signUpModalContainer} ${signUpModalActive && style.signUpModalContainerActive}`}>
-      <div ref={modalRef} className={`${style.signUpModal} ${signUpModalActive}`} >
+      <div ref={modalRef} className={style.signUpModal} >
         <div className={style.modalClose} onClick={handleClose}><IoCloseSharp /></div>
         <div className={style.modalHeader}>
           <h1>Sign Up</h1>

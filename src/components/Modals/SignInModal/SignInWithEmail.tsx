@@ -65,7 +65,7 @@ const SignInWithEmail = () => {
         </div>
         {/* Assuming Password component is defined and takes setPassword and password props */}
         <Password id={'signInPassword'} setPassword={setPassword} password={password} error={error} setError={setError}/>
-        <button className={style.signInEmailBtn}type="submit">
+        <button className={style.signInEmailBtn} type="submit">
           Continue
         </button>
       </form>

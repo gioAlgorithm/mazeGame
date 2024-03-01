@@ -12,6 +12,12 @@ interface ContextType{
   setSignInModalActive: React.Dispatch<React.SetStateAction<boolean>>
   signUpModalActive: boolean
   setSignUpModalActive: React.Dispatch<React.SetStateAction<boolean>>
+  changeNameActive: boolean
+  setChangeNameActive: React.Dispatch<React.SetStateAction<boolean>>
+  warningNameActive: boolean
+  setWarningNameActive: React.Dispatch<React.SetStateAction<boolean>>
+  getNameDate: string | null
+  setGetNameDate: React.Dispatch<React.SetStateAction<string | null>>
 }
 
 // creating context
@@ -20,11 +26,22 @@ export const ModalContext = createContext<ContextType>({
   setSignInModalActive: ()=> {},
   signUpModalActive: false,
   setSignUpModalActive: () => {},
+  changeNameActive: false,
+  setChangeNameActive: ()=> {},
+  warningNameActive: false,
+  setWarningNameActive: ()=> {},
+  getNameDate: null,
+  setGetNameDate: ()=> {},
 })
 
 export const ModalProvider = ({children}: ContextProviderProps) =>{
   const [signInModalActive, setSignInModalActive] = useState(false)
   const [signUpModalActive, setSignUpModalActive] = useState(false)
+  const [changeNameActive, setChangeNameActive] = useState(false)
+
+  // warning for the new name and the date
+  const [warningNameActive, setWarningNameActive] = useState(false)
+  const [getNameDate, setGetNameDate] = useState<string | null>(null)
 
   return (
     <ModalContext.Provider
@@ -33,6 +50,12 @@ export const ModalProvider = ({children}: ContextProviderProps) =>{
         setSignInModalActive,
         signUpModalActive,
         setSignUpModalActive,
+        changeNameActive,
+        setChangeNameActive,
+        warningNameActive, 
+        setWarningNameActive,
+        getNameDate, 
+        setGetNameDate,
       }}
     >
       {children}

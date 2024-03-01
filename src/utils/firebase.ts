@@ -25,6 +25,7 @@ export const db: Firestore = getFirestore(app);
 // Log a custom event to Firebase Analytics
 export const auth = getAuth()
 
+
 onAuthStateChanged(auth, (user: User | null) => {
   if (user) {
     const { uid, email, photoURL, displayName } = user;

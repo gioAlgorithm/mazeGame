@@ -77,7 +77,7 @@ const SignInModal = () => {
 
   return (
     <div  className={`${style.signInModalContainer} ${signInModalActive && style.signInModalContainerActive}`}>
-      <div ref={modalRef} className={`${style.signInModal} ${signInModalActive}`} >
+      <div ref={modalRef} className={style.signInModal} >
         <div className={style.modalClose} onClick={handleClose}><IoCloseSharp /></div>
         <div className={style.modalHeader}>
           <h1>Login</h1>

@@ -95,7 +95,7 @@ const Game: React.FC<TimeProps> = ({startTimer, stopTimer, time, winTime, setWin
           [level]: 1, // Set the specific level count to 1
         });
       }
-      
+  
       // Add a new document to the user's "history" collection for the lost game
       const userHistoryCollection = collection(db, `users/${userId}/history`);
       await addDoc(userHistoryCollection, {

@@ -6,6 +6,8 @@ import SignInModal from '@/components/Modals/SignInModal/SignInModal'
 import SignUpModal from '@/components/Modals/SignUpModal/SignUpModal'
 import { ModalProvider } from '@/context/modalContext'
 import UserProvider from '@/context/UserContext'
+import ChangeNameModal from '@/components/Modals/ChangeNameModal/ChangeNameModal'
+import WarningName from '@/components/Modals/WarningName/WarningName'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,7 +29,9 @@ export default function RootLayout({
         <UserProvider>
           <SignInModal />
           <SignUpModal />
-        
+          <ChangeNameModal />
+          <WarningName />
+
           <Navbar />
           {children}
         </UserProvider>
