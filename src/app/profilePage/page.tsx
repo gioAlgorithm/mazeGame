@@ -57,7 +57,6 @@ const ProfilePage = () => {
       const userRef = doc(db, 'users', user.uid);
       const userDoc = await getDoc(userRef);
   
-      console.log('userDoc:', userDoc.data()); // Log user document data
   
       if (userDoc.exists()) {
         const newNameDate = userDoc.data().newNameDate;
