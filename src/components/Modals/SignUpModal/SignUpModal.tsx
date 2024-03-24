@@ -105,7 +105,7 @@ const SignUpModal = () => {
         {/* form for register */}
           <form onSubmit={handleSignUp}>
             <div className={style.registerNickname}>
-              <input  
+              <input 
                 required 
                 placeholder=" " 
                 type="text" 

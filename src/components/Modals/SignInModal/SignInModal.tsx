@@ -34,7 +34,6 @@ const SignInModal = () => {
     let handler = (event: any) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setSignInModalActive(false)
-        
       }
     };
 
