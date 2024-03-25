@@ -3,6 +3,12 @@ import { useEffect } from 'react'
 import styles from './page.module.scss'
 import GameContent from '@/components/GameContent/GameContent'
 import {metadata} from "./metaData"
+import { Roboto } from 'next/font/google';
+
+const roboto = Roboto({
+  weight: ['100', '300', '400', '500', '700', '900'],
+  subsets: ['latin', 'cyrillic', 'cyrillic-ext' ,'greek', 'latin-ext']
+})
 
 export default function Home() {
 
@@ -19,8 +25,8 @@ export default function Home() {
         <GameContent />
       </div>
       <div className={styles.warning}>
-        <h1>Warning !!!</h1>
-        <p>
+        <h1 className={roboto.className}>Warning !!!</h1>
+        <p className={roboto.className}>
           We&apos;re sorry, but this game is only playable on PC. 
           Please switch to a device with a larger screen to enjoy the full gaming experience.
         </p>

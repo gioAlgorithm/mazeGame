@@ -7,8 +7,8 @@ const SignInSuggest = () => {
   return (
     <div className={style.suggest}>
       <p>
-        Sign in now to save your progress, access your profile, 
-        and view your stats. Don&apos;t miss out on the full experience!
+        Join us now to save your progress, unlock your profile,
+        and track your stats. Don&apos;t miss out on the complete experience! Sign in or Sign up today!
       </p>
       <div className={style.container}>
         <SigninButton />

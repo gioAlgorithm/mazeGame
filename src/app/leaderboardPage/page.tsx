@@ -12,6 +12,7 @@ import LoadingLeaderboard from './LoadingLeaderboard'
 import { Quantico } from 'next/font/google'
 import { Black_Ops_One } from 'next/font/google'
 import {metadata} from "./metaData"
+import PlayerSuggest from './PlayerSuggest/PlayerSuggest'
 
 
 const blackOps = Black_Ops_One({
@@ -41,6 +42,9 @@ const LeaderboardPage = () => {
     <div className={style.leaderboardPage}>
       {(user || loading) && 
         <PlayerPosition />
+      }
+      {!user &&
+        <PlayerSuggest />
       }
 
       <div className={style.leaderboard}>

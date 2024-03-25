@@ -32,3 +32,13 @@
   align-items: center;
   justify-content: center;
 }
+
+@media(max-width: 600px){
+  .innerNavbar{
+    a{
+      font-size: 1.3rem;
+      width: 50px;
+      text-align: center;
+    }
+  }
+}
